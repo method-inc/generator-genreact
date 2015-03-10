@@ -1,0 +1,33 @@
+{
+  "name": "generator-react",
+  "version": "1.0.0",
+  "description": "Yeoman react generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "skookum/generator-react",
+  "author": {
+    "name": "Dustan Kasten",
+    "email": "dustan.kasten@gmail.com",
+    "url": "http://iamdustan.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.18.9",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
