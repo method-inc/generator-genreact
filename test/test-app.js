@@ -18,10 +18,16 @@ describe('react:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'bower.json',
       'package.json',
       '.editorconfig',
-      '.jshintrc'
+      'index.html',
+      'index.js',
+      'README.md',
+      'server.js',
+      'webpack.client.js',
+      'webpack.node.js',
+      'scripts/webpack.base.js',
+      'scripts/white-list.js',
     ]);
   });
 });

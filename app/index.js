@@ -13,8 +13,15 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the stylish ' + chalk.red('React') + ' generator!'
+      'Welcome to the life-changing ' + chalk.red('React') + ' generator!'
     ));
+
+    this.argument('name', {
+      required: false,
+      type: String,
+      desc: 'Your Isomorphic React Application’s name',
+      default: 'app',
+    });
 
     var prompts = [{
       type: 'confirm',
@@ -32,13 +39,11 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     app: function () {
-      this.fs.copy(
+      var name = this.name;
+      this.fs.copyTpl(
         this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
-      this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
+        this.destinationPath('package.json'),
+        {name: name}
       );
     },
 
@@ -48,8 +53,36 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('.editorconfig')
       );
       this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
+        this.templatePath('_index.html'),
+        this.destinationPath('index.html')
+      );
+      this.fs.copy(
+        this.templatePath('_index.js'),
+        this.destinationPath('index.js')
+      );
+      this.fs.copy(
+        this.templatePath('_README.md'),
+        this.destinationPath('README.md')
+      );
+      this.fs.copy(
+        this.templatePath('_server.js'),
+        this.destinationPath('server.js')
+      );
+      this.fs.copy(
+        this.templatePath('_webpack.client.js'),
+        this.destinationPath('webpack.client.js')
+      );
+      this.fs.copy(
+        this.templatePath('_webpack.node.js'),
+        this.destinationPath('webpack.node.js')
+      );
+      this.fs.copy(
+        this.templatePath('scripts/_webpack.base.js'),
+        this.destinationPath('scripts/webpack.base.js')
+      );
+      this.fs.copy(
+        this.templatePath('scripts/_white-list.js'),
+        this.destinationPath('scripts/white-list.js')
       );
     }
   },
