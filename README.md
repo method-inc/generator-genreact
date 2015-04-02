@@ -1,47 +1,108 @@
-# generator-react [![Build Status](https://secure.travis-ci.org/iamdustan/generator-react.png?branch=master)](https://travis-ci.org/iamdustan/generator-react)
+# react-generator
 
-> [Yeoman](http://yeoman.io) generator
+Welcome to this brave new world. This is a world of the future that also brings
+with us all of the things we learned in the past.
 
+It may be a bit overwhelming if you try to understand all of it right out of the
+gate, though. This is a many layered architecture that sets you up for success
+at every level. It is highly opinionated, but attempts to hold these opinions
+loosely so that you can change it if you so desire.
 
-## Getting Started
+## Get Hacking
 
-### What is Yeoman?
+* `npm install`
+* `npm start`
+* `open localhost:<%= port %>`
 
-Trick question. It's not a thing. It's this guy:
+## Generator commands
 
-![](http://i.imgur.com/JHaAlBJ.png)
+### Components
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
+Components are the building blocks of your application. Think of them like Web
+Component, but better. They have clear compositional boundaries, care their CSS
+and behavior with them, and your application understands these dependencies so
+bundling for production is trivial.
 
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+**Examples:**
 
-```bash
-npm install -g yo
+* `yo react:component MyComponentName`
+
+This will generate the following file structure in `./app/components`.
+
+```
+|- MyComponentname/
+  |- index.js
+  |- styles.css
+  |- __test__/
+    |- index.js
 ```
 
-### Yeoman Generators
+### Handlers
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
+Handlers are almost synonymous with a route or URL. Think of these as the entry
+point to a specific part of your application.
 
-To install generator-react from npm, run:
+**Examples:**
 
-```bash
-npm install -g generator-react
-```
+* `yo react:handler MyPageHandler`
+* `yo react:handler MyPageHandler/MySectionHandler`
 
-Finally, initiate the generator:
+The key difference is whether it’s a top-level route or a child route. This
+command will create the following structure and attempt to add it to the
+appropriate location in your `routes.js file.
 
-```bash
-yo react
-```
+### Components: Revisited
 
-### Getting To Know Yeoman
+You’ve generated a few components and now you have a few pages. We’ve already
+seen the structure that a component generates and requires. To generate
+additional, section-specific components, you would do the following:
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+**Examples:**
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+* `yo react:component MyFlashyComponent`
+  --> `./app/components/MyFlashComponent`
+* `yo react:component MyPageHandler/MyFlashyComponent`
+  --> `./app/MyPageHandler/components/MyFlashComponent`
+* `yo react:component MyPageHandler/MySectionHandler/MyFlashyComponent`
+  --> `./app/MyPageHandler/MySectionHandler/components/MyFlashComponent`
 
+## A few of the things you get
+
+Pablo Picaso said that great artists steal. Whilst not a copy-paste deal
+(plagiarism), this toolchain takes the best practices and experiences we’ve had
+creating great consumer products and bundles it together for us in a package
+that allows us to not just get up and running quickly, but to iterate
+effectively.
+
+A few of the things that you will find in here:
+
+* An amazing development environment. There is hot-reload tooling for both the
+  client and server built-in.
+* A component architecture with colocated concerns.
+* Test suites that are ready to go.
+* A UI toolchain. We expect and prefer that you’re data layer be somewhere else.
+  The data and UI layers should be able to scale independently as needed.
+* SuitCSS conformance checking. CSS in and of itself includes many foot-guns.
+  Suit will keep the safety on. (We will likely be exploring other more
+  restrictive options in the future)
+* Rich documentation and style guide web interface.
+
+Ideally, in this environment you should have less to think about while writing a
+component. You don’t need to worry about how compilation happens or how to
+ensure that the CSS a component needs gets onto a page. You shouldn’t need to
+worry about how the final files are delivered to a client in production. These
+are all practices that are understood well, but full of nuance and tradeoffs. We
+have tuned—and continue to tune—these characteristics.
+
+## Tools in Use
+
+* Webpack
+* React
+* react-router
+* react-resolver
+* jest
 
 ## License
 
-MIT
+This generator and toolchain is MIT Licensed. The projects and tools we bring
+together for you each have their own license and terms you should be aware of.
