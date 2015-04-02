@@ -1,0 +1,10 @@
+Description:
+    Creates a new React Component class and style file
+
+Example:
+    yo react:component ComponentName
+
+    This will create:
+        components/ComponentName/index.js
+        components/ComponentName/styles.css
+
