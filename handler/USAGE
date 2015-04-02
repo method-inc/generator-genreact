@@ -1,0 +1,11 @@
+Description:
+    Creates a new ReactRouter handler
+
+Example:
+    yo react:handler RouteHandler
+
+    This will create:
+        handlers/RouteHandler.js
+    And add routing to:
+        routes.js
+
