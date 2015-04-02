@@ -16,7 +16,6 @@ function appendRoute(file, route, parentRoute) {
   });
 }
 
-
 var HandlerGenerator = module.exports = yeoman.generators.Base.extend({
   constructor: function() {
     yeoman.generators.Base.apply(this, arguments);

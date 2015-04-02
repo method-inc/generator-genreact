@@ -1,4 +1,4 @@
-# <%= name =>
+# <%= name %>
 
 Welcome to this brave new world. This is a world of the future that also brings
 with us all of the things we learned in the past.

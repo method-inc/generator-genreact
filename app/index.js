@@ -20,7 +20,14 @@ module.exports = yeoman.generators.Base.extend({
       required: false,
       type: String,
       desc: 'Your Isomorphic React Application’s name',
-      default: 'app',
+      defaults: 'Isomorphism',
+    });
+
+    this.argument('port', {
+      required: false,
+      type: Number,
+      desc: 'Port for application to run on',
+      defaults: 4000,
     });
 
     var prompts = [{
@@ -48,41 +55,103 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     projectfiles: function () {
+      var name = this.name;
+      var port = this.port;
+      var hotServerPort = port + 1;
+      console.log('name', name);
+      console.log('port', port);
+      console.log('hotServerPort', hotServerPort);
+      this.fs.copyTpl(
+        this.templatePath('_README.md'),
+        this.destinationPath('README.md'),
+        {name: name, port: port}
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('_index.html'),
+        this.destinationPath('index.html'),
+        {name: name, hotServerPort: hotServerPort}
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('_webpack.node.js'),
+        this.destinationPath('webpack.node.js'),
+        {port: port}
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('_webpack.client.js'),
+        this.destinationPath('webpack.client.js'),
+        {port: port, hotServerPort: hotServerPort}
+      );
+
       this.fs.copy(
         this.templatePath('editorconfig'),
         this.destinationPath('.editorconfig')
-      );
-      this.fs.copy(
-        this.templatePath('_index.html'),
-        this.destinationPath('index.html')
       );
       this.fs.copy(
         this.templatePath('_index.js'),
         this.destinationPath('index.js')
       );
       this.fs.copy(
-        this.templatePath('_README.md'),
-        this.destinationPath('README.md')
-      );
-      this.fs.copy(
         this.templatePath('_server.js'),
         this.destinationPath('server.js')
-      );
-      this.fs.copy(
-        this.templatePath('_webpack.client.js'),
-        this.destinationPath('webpack.client.js')
-      );
-      this.fs.copy(
-        this.templatePath('_webpack.node.js'),
-        this.destinationPath('webpack.node.js')
       );
       this.fs.copy(
         this.templatePath('scripts/_webpack.base.js'),
         this.destinationPath('scripts/webpack.base.js')
       );
       this.fs.copy(
-        this.templatePath('scripts/_white-list.js'),
-        this.destinationPath('scripts/white-list.js')
+        this.templatePath('scripts/_node-white-list.js'),
+        this.destinationPath('scripts/node-white-list.js')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('handlers/_index.js'),
+        this.destinationPath('handlers/Home/index.js'),
+        {HandlerName: 'Home'}
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('handlers/_styles.css'),
+        this.destinationPath('handlers/Home/styles.css'),
+        {HandlerName: 'Home'}
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('handlers/_index.js'),
+        this.destinationPath('handlers/Base/index.js'),
+        {HandlerName: 'AppBase'}
+      );
+      this.fs.copyTpl(
+        this.templatePath('handlers/_styles.css'),
+        this.destinationPath('handlers/Base/styles.css'),
+        {HandlerName: 'AppBase'}
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('handlers/_index.js'),
+        this.destinationPath('handlers/NotFound/index.js'),
+        {HandlerName: 'NotFound'}
+      );
+      this.fs.copyTpl(
+        this.templatePath('handlers/_styles.css'),
+        this.destinationPath('handlers/NotFound/styles.css'),
+        {HandlerName: 'NotFound'}
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('env/_node.js'),
+        this.destinationPath('env/node.js'),
+        {port: port}
+      );
+      this.fs.copy(
+        this.templatePath('env/_web.js'),
+        this.destinationPath('env/web.js')
+      );
+      this.fs.copy(
+        this.templatePath('_routes.js'),
+        this.destinationPath('routes.js')
       );
     }
   },

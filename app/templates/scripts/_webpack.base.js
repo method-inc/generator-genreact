@@ -1,8 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
+var glob = require('glob');
 var fs = require('fs');
 var readdir = fs.readdirSync;
-var WHITE_LIST = require('./node-white-list');
+var WHITE_LIST_OF_NODE_MODULES = require('./node-white-list');
 
 /* hack to unbreak https://github.com/aaronj1335/rework-webpack-loader/blob/master/lib/plugins/urls.js#L41
 var suit = require('suitcss-preprocessor');
@@ -43,10 +44,8 @@ var HOT_SERVER = function(port) {
  * @param {string} options.env development | production
  */
 module.exports = function(options) {
-  var entry = readdir('./src/pages').reduce(function(o, n) {
-    if (/\.js$/.test(o)) {
-      o[n.split('.')[0].toLowerCase()] = HOT_SERVER(options.hotServerPort);
-    }
+  var entry = glob.sync('handlers/*/*.js').reduce(function(o, n) {
+    o[n.split('.')[0].toLowerCase()] = HOT_SERVER(options.hotServerPort);
     return o;
   }, {});
   entry.client = HOT_SERVER(options.hotServerPort).concat('./env/web');
@@ -68,13 +67,13 @@ module.exports = function(options) {
   return {
     externals: nodeModules,
     cache: true,
-    context: path.join(__dirname),
+    context: path.join(__dirname, '..'),
     entry: entry,
 
     target: options.target,
 
     output: {
-      path: path.join(__dirname, 'dist'),
+      path: path.join(__dirname, '..', 'dist'),
       filename: '[name].js',
       publicPath: 'http://localhost:' + options.hotServerPort + '/dist/'
     },

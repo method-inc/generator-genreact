@@ -27,7 +27,7 @@ describe('react:app', function () {
       'webpack.client.js',
       'webpack.node.js',
       'scripts/webpack.base.js',
-      'scripts/white-list.js',
+      'scripts/node-white-list.js',
     ]);
   });
 });

@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.dev');
+var config = require('./webpack.client');
 var port = config.__options.hotServerPort;
 
 new WebpackDevServer(webpack(config), {

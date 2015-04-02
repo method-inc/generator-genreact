@@ -12,7 +12,7 @@
     "node-noop": "0.0.1",
     "object.assign": "^1.1.1",
     "react": "^0.13.1",
-    "react-resolver": "^0.2.0",
+    "react-resolver": "git://github.com/ericclemmons/react-resolver#d49b46a25b14b92f4f657fc853d67db0ecdb6148",
     "react-router": "^0.13.1",
     "react-tap-event-plugin": "^0.1.4",
     "react-tween-state": "0.0.5",
