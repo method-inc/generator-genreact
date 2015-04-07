@@ -18,14 +18,24 @@ describe('react:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'package.json',
       '.editorconfig',
+      '.eslintrc',
       'index.html',
       'index.js',
+      'package.json',
       'README.md',
+      'routes.js',
       'server.js',
       'webpack.client.js',
       'webpack.node.js',
+      'env/node.js',
+      'env/web.js',
+      'handlers/Base/index.js',
+      'handlers/Base/styles.css',
+      'handlers/Home/index.js',
+      'handlers/Home/styles.css',
+      'handlers/NotFound/index.js',
+      'handlers/NotFound/styles.css',
       'scripts/webpack.base.js',
       'scripts/node-white-list.js',
     ]);

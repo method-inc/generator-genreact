@@ -78,6 +78,14 @@ module.exports = function(options) {
       publicPath: 'http://localhost:' + options.hotServerPort + '/dist/'
     },
 
+    resolve: {
+      modulesDirectories: [
+        'node_modules',
+        'components',
+        '../components',
+      ]
+    },
+
     module: {
       // extensions: ['', '.webpack.js', '.web.js', '.js', '.css'],
 

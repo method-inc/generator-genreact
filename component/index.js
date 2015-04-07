@@ -15,13 +15,14 @@ var HandlerGenerator = module.exports = yeoman.generators.Base.extend({
       desc: 'The ReactComponent name'
     });
     // Next, add your custom code
-    // this.option('parent'); // This method adds support for a `--coffee` flag
+    this.option('handler'); // This method adds support for a `--handler` flag
   },
 
   writing: function() {
     var name = last(this.name.split('/'));
+    var handlerRoot = this.options.handler ? 'handlers/' + this.options.handler + '/' : '';
 
-    var destinationRoot = 'components/' + this.name;
+    var destinationRoot = handlerRoot + 'components/' + this.name;
     this.fs.copyTpl(
       this.templatePath('index.js'),
       this.destinationPath(destinationRoot + '/index.js'),

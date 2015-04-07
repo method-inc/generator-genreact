@@ -58,9 +58,6 @@ module.exports = yeoman.generators.Base.extend({
       var name = this.name;
       var port = this.port;
       var hotServerPort = port + 1;
-      console.log('name', name);
-      console.log('port', port);
-      console.log('hotServerPort', hotServerPort);
       this.fs.copyTpl(
         this.templatePath('_README.md'),
         this.destinationPath('README.md'),
@@ -89,6 +86,11 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('editorconfig'),
         this.destinationPath('.editorconfig')
       );
+      this.fs.copy(
+        this.templatePath('eslintrc'),
+        this.destinationPath('.eslintrc')
+      );
+
       this.fs.copy(
         this.templatePath('_index.js'),
         this.destinationPath('index.js')
