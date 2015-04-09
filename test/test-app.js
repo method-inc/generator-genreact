@@ -11,7 +11,7 @@ describe('react:app', function () {
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
-        someOption: true
+        someOption: true,
       })
       .on('end', done);
   });

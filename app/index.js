@@ -34,8 +34,8 @@ module.exports = yeoman.generators.Base.extend({
       type: 'confirm',
       name: 'someOption',
       message: 'Would you like to enable this option?',
-      default: true
-    }];
+      default: true,
+    }, ];
 
     this.prompt(prompts, function (props) {
       this.someOption = props.someOption;
@@ -155,12 +155,12 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_routes.js'),
         this.destinationPath('routes.js')
       );
-    }
+    },
   },
 
   install: function () {
     this.installDependencies({
-      skipInstall: this.options['skip-install']
+      skipInstall: this.options['skip-install'],
     });
-  }
+  },
 });
