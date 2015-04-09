@@ -1,6 +1,4 @@
 'use strict';
-var path = require('path');
-var chalk = require('chalk');
 var util = require('../util');
 var yeoman = require('yeoman-generator');
 var generators = yeoman.generators;
@@ -12,17 +10,17 @@ function appendRoute(file, route, parentRoute) {
       type: 'appendRoute',
       route: route,
       parentRoute: parentRoute,
-    }
+    },
   });
 }
 
-var HandlerGenerator = module.exports = yeoman.generators.Base.extend({
+var HandlerGenerator = generators.Base.extend({
   constructor: function() {
     yeoman.generators.Base.apply(this, arguments);
     this.argument('name', {
       required: true,
       type: String,
-      desc: 'The RouteHandler name'
+      desc: 'The RouteHandler name',
     });
     // Next, add your custom code
     this.option('parent'); // This method adds support for a `--coffee` flag
@@ -60,4 +58,6 @@ var HandlerGenerator = module.exports = yeoman.generators.Base.extend({
     */
   },
 });
+
+module.exports = HandlerGenerator;
 

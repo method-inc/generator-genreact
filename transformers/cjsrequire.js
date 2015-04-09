@@ -21,19 +21,19 @@ module.exports = function generateCJSExpr(module, identifier) {
 
   var requireExpression = b.callExpression(
     b.identifier('require'), [
-      module
+      module,
     ]
   );
 
   if (identifier) {
-    return b.variableDeclaration("var", [
+    return b.variableDeclaration('var', [
       b.variableDeclarator(
         identifier,
         requireExpression
-      )
+      ),
     ]);
   }
 
   // console.warn('Unnamed dependency: %s', module.value);
   return b.expressionStatement(requireExpression);
-}
+};

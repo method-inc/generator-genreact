@@ -3,6 +3,7 @@
 var path = require('path');
 var fs = require('fs');
 var recast = require('recast');
+var debug = require('debug')('util');
 
 var cjsrequire = require('./transformers/cjsrequire');
 
@@ -10,7 +11,7 @@ function insertAt(obj, prop, index, thing) {
   var start = obj[prop].slice(0, index);
   var end = obj[prop].slice(index);
   obj[prop] = start.concat(thing).concat(end);
-};
+}
 
 function transform(args) {
   var ast = recast.parse(args.source);
@@ -33,15 +34,15 @@ function transform(args) {
         var program = this.findProgram(path);
         insertAt(program.value, 'body', 2, requireHandler);
       }
-    }
+    },
     // TODO: visit Base Route and append to it.
   });
 
   var result = recast.print(ast).code;
 
-  console.log(result);
+  debug(result);
   return result;
-};
+}
 
 function transformFile(args) {
   args.path = args.path || process.cwd();
@@ -55,5 +56,5 @@ function transformFile(args) {
 
 module.exports = {
   transform: transform,
-  transformFile: transformFile
+  transformFile: transformFile,
 };
