@@ -23,14 +23,18 @@ rework.plugins.urls.processJs = function(js) {
 var concat = function() {
   var args = Array.prototype.slice.call(arguments);
   var result = args.reduce(function(o, a) {
-    if (a) return o.concat(a);
+    if (a) {
+      return o.concat(a);
+    }
     return o;
   }, []);
   return result;
 };
 
 var HOT_SERVER = function(port) {
-  if (typeof port === 'undefined') return [];
+  if (typeof port === 'undefined') {
+    return [];
+  }
 
   return [
     'webpack-dev-server/client?http://0.0.0.0:' + port,
@@ -53,7 +57,7 @@ module.exports = function(options) {
   var nodeModules = {};
   if (options.target === 'node') {
     entry = './env/node';
-    fs.readdirSync('node_modules')
+    readdir('node_modules')
       .filter(function(x) {
         return !(['.bin'].indexOf(x) === -1 &&
           WHITE_LIST_OF_NODE_MODULES.indexOf(x) !== -1);
@@ -75,7 +79,7 @@ module.exports = function(options) {
     output: {
       path: path.join(__dirname, '..', 'dist'),
       filename: '[name].js',
-      publicPath: 'http://localhost:' + options.hotServerPort + '/dist/'
+      publicPath: 'http://localhost:' + options.hotServerPort + '/dist/',
     },
 
     resolve: {
@@ -83,7 +87,7 @@ module.exports = function(options) {
         'node_modules',
         'components',
         '../components',
-      ]
+      ],
     },
 
     module: {
@@ -95,15 +99,15 @@ module.exports = function(options) {
         {test: /\.jsx?$/,
           exclude: [
             // exclude everything that isn’t a react- component
-            /node_modules(?!\/react-)/
+            /node_modules(?!\/react-)/,
             // /node_modules/
           ],
           loaders: concat(
             options.hotloader && 'react-hot',
             'babel?experimental&optional=runtime'
-          )
+          ),
         },
-      ]
+      ],
     },
 
     plugins: concat(
@@ -117,7 +121,7 @@ module.exports = function(options) {
 
       (options.hotloader && [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
       ]),
 
       new webpack.DefinePlugin({
