@@ -3,6 +3,9 @@
   "description": "An amazing, rich, isomorphic website created with skookum-react",
   "private": true,
   "version": "0.1.0",
+  "scripts":{
+    "lint": "eslint ."
+  },
   "dependencies": {
     "es6-promise": "^2.0.1",
     "express": "^4.12.3",
@@ -21,9 +24,13 @@
   },
   "devDependencies": {
     "babel-core": "^5.0.12",
+    "babel-eslint": "^2.0.2",
     "babel-loader": "^5.0.0",
     "babel-runtime": "^5.0.12",
     "css-loader": "^0.9.1",
+    "debug": "^2.1.3",
+    "eslint": "^0.18.0",
+    "eslint-plugin-react": "^2.1.0",
     "esprima-loader": "^0.9.0",
     "file-loader": "^0.8.1",
     "glob": "^5.0.3",

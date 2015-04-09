@@ -4,7 +4,6 @@ import Router from 'react-router';
 
 const {
   DefaultRoute,
-  Link,
   Route,
   RouteHandler,
   NotFoundRoute
