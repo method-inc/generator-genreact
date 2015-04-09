@@ -11,7 +11,7 @@ import debug from 'debug';
 
 import {readFileSync as read} from 'fs';
 
-debug('http');
+debug = debug('http');
 
 var tmpl = function(markup) {
   return read('./index.html', 'utf8').replace('†react†', markup);
