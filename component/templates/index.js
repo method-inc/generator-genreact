@@ -1,10 +1,10 @@
 /** @flow */
 
-require('./styles.css')
+require('./styles.css');
 
-var React = require('react');
+import React from 'react';
 
-var <%= ComponentName %> = React.createClass({
+class <%= ComponentName %> extends React.Component {
   render(): ?ReactElement {
     return (
       <div className="<%= ComponentName %>">
@@ -12,7 +12,6 @@ var <%= ComponentName %> = React.createClass({
       </div>
     );
   }
-});
+}
 
-module.exports = <%= ComponentName %>;
-
+export default <%= ComponentName %>;

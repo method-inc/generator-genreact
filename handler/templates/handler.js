@@ -1,28 +1,27 @@
-var React = require('react');
-var Resolver = require('react-resolver');
-var RouteHandler = require('react-router').RouteHandler;
+import React from 'react';
+import Resolver from 'react-resolver';
+import {RouteHandler} from 'react-router';
 
-var <%= RouteName %> = React.createClass({
-  mixins: [Resolver.mixin],
-
-  statics: {
-    resolve: {
-      promiseStyle() {
-        return PromiseStore.find(this.getParams().id);
-      },
-      callback(done) {
-        fetch('/api/' + this.getParams().id, done);
-      }
-    }
-  },
-
-  render() {
+class <%= RouteName %> extends React.Component {
+  render(): ?ReactElement {
     return (
-      <div><%= RouteName %></div>
+      <div className="<%= RouteName %>">
+        <%= RouteName %>
+      </div>
     );
   }
+}
+
+<%= RouteName %>.propTypes = {
+  // promise: React.PropTypes.string.isRequired,
+};
+
+export default Resolver.createContainer(<%= RouteName %>, {
+  resolve: {
+    /*
+    promise() {
+      return PromiseStore.find(this.getParams().id);
+    }
+    */
+  },
 });
-
-module.exports = <%= RouteName %>;
-
-
