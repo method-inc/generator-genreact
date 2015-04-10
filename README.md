@@ -12,7 +12,8 @@ loosely so that you can change it if you so desire.
 
 ## Get Hacking
 
-* `npm install`
+* `mkdir my-new-project && cd $_`
+* `yo react:app [app-name]`
 * `npm start`
 * `open localhost:<%= port %>`
 
