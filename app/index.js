@@ -90,7 +90,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('eslintrc'),
         this.destinationPath('.eslintrc')
       );
-
+      this.fs.copy(
+        this.templatePath('travis.yml'),
+        this.destinationPath('.travis.yml')
+      );
       this.fs.copy(
         this.templatePath('_index.js'),
         this.destinationPath('index.js')
