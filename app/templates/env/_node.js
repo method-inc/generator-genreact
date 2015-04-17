@@ -1,17 +1,14 @@
 /** @flow */
-require('es6-promise').polyfill();
 require('isomorphic-fetch');
+var debug = require('debug')('app startup');
 
 import express from 'express';
-import Resolver from 'react-resolver';
 import React from 'react';
 import Router from 'react-router';
+import {Resolver} from 'react-resolver';
 import routes from '../routes';
-import debug from 'debug';
 
 import {readFileSync as read} from 'fs';
-
-debug = debug('http');
 
 var tmpl = function(markup) {
   return read('./index.html', 'utf8').replace('†react†', markup);
@@ -20,9 +17,8 @@ var tmpl = function(markup) {
 var app = express();
 
 app.get('*', function(req, res) {
-  var resolver = Resolver.create();
   var router = Router.create({
-    routes: resolver.route(routes),
+    routes: routes,
     location: req.url,
     onAbort(redirect) {
       res.writeHead(303, {Location: redirect.to});
@@ -35,8 +31,8 @@ app.get('*', function(req, res) {
   });
 
   router.run(function(Handler, state) {
-    resolver.resolve(<Handler />).then(function(handled) {
-      res.send(tmpl(React.renderToStaticMarkup(handled)));
+    Resolver.renderToString(<Handler />).then(function(string) {
+      res.send(tmpl(string));
     });
   });
 });
