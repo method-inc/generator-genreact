@@ -7,7 +7,7 @@ var os = require('os');
 
 describe('react:app', function () {
   before(function (done) {
-    helpers.run(path.join(__dirname, '../handler'))
+    helpers.run(path.join(__dirname, '../component'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withArguments('TestComponent')
       .on('end', done);
@@ -15,8 +15,8 @@ describe('react:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'components/TestComponent.js',
-      'components/TestComponent.css',
+      'components/TestComponent/index.js',
+      'components/TestComponent/styles.css',
     ]);
   });
 });
