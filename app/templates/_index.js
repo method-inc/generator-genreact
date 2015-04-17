@@ -34,5 +34,9 @@ webpack(config, function(err, stats) {
     debug(chunk.toString());
   });
 
+  serverProcess.stderr.on('data', function(chunk) {
+    debug(chunk.toString());
+  });
+
 });
 

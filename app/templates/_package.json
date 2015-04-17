@@ -4,10 +4,10 @@
   "private": true,
   "version": "0.1.0",
   "scripts":{
+    "start": "DEBUG=*,-babel node .",
     "lint": "eslint ."
   },
   "dependencies": {
-    "es6-promise": "^2.0.1",
     "express": "^4.12.3",
     "flux": "^2.0.1",
     "immutable": "^3.7.1",
@@ -15,7 +15,7 @@
     "node-noop": "0.0.1",
     "object.assign": "^1.1.1",
     "react": "^0.13.1",
-    "react-resolver": "git://github.com/ericclemmons/react-resolver#f9cf0f70e608c348f75f789325624260abe2b31a",
+    "react-resolver": "1.1.3",
     "react-router": "^0.13.2",
     "react-tap-event-plugin": "^0.1.6",
     "react-tween-state": "0.0.5",
