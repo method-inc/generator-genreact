@@ -8,14 +8,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "es6-promise": "^2.1.0",
     "express": "^4.12.3",
     "flux": "^2.0.1",
     "immutable": "^3.7.1",
     "isomorphic-fetch": "^2.0.1",
     "node-noop": "0.0.1",
     "object.assign": "^1.1.1",
-    "react": "^0.13.1",
-    "react-resolver": "1.1.3",
+    "react": "^0.13.2",
+    "react-resolver": "^1.1.3",
     "react-router": "^0.13.2",
     "react-tap-event-plugin": "^0.1.6",
     "react-tween-state": "0.0.5",
@@ -23,10 +24,10 @@
     "suitcss-preprocessor": "^0.4.0"
   },
   "devDependencies": {
-    "babel-core": "^5.0.12",
-    "babel-eslint": "^2.0.2",
+    "babel-core": "^5.1.11",
+    "babel-eslint": "^3.0.1",
     "babel-loader": "^5.0.0",
-    "babel-runtime": "^5.0.12",
+    "babel-runtime": "^5.1.11",
     "css-loader": "^0.9.1",
     "debug": "^2.1.3",
     "eslint": "^0.18.0",

@@ -7,7 +7,6 @@
 
 var WHITE_LIST_OF_NODE_MODULES = [
   'react-autodoc',
-  'react-resolver',
   'react-router',
 ];
 

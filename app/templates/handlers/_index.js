@@ -4,13 +4,16 @@
 require('./styles.css');
 
 import React from 'react';
-import Resolver from 'react-resolver';
+import {Resolver} from 'react-resolver';
 import {RouteHandler} from 'react-router';
 
 class <%= HandlerName %> extends React.Component {
   render(): ?ReactElement {
     return (
-      <div>Welcome <%= HandlerName %></div>
+      <div>
+        Welcome <%= HandlerName %>
+        <RouteHandler/>
+      </div>
     );
   }
 }
