@@ -45,7 +45,12 @@ var HandlerGenerator = generators.Base.extend({
   writing: function() {
     this.fs.copyTpl(
       this.templatePath('handler.js'),
-      this.destinationPath('handlers/' + this.name + '.js'),
+      this.destinationPath('handlers/' + this.name + '/index.js'),
+      {RouteName: this.name}
+    );
+    this.fs.copyTpl(
+      this.templatePath('styles.css'),
+      this.destinationPath('handlers/' + this.name + '/styles.css'),
       {RouteName: this.name}
     );
 
