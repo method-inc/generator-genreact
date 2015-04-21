@@ -33,7 +33,6 @@ describe('react:app', function () {
       'handlers/Base/index.js',
       'handlers/Base/styles.css',
       'handlers/Home/index.js',
-      'handlers/Home/styles.css',
       'handlers/NotFound/index.js',
       'handlers/NotFound/styles.css',
       'scripts/webpack.base.js',
