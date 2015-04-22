@@ -30,18 +30,7 @@ module.exports = yeoman.generators.Base.extend({
       defaults: 4000,
     });
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true,
-    }, ];
-
-    this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
-
-      done();
-    }.bind(this));
+    done();
   },
 
   writing: {
@@ -90,7 +79,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('eslintrc'),
         this.destinationPath('.eslintrc')
       );
-
+      this.fs.copy(
+        this.templatePath('travis.yml'),
+        this.destinationPath('.travis.yml')
+      );
       this.fs.copy(
         this.templatePath('_index.js'),
         this.destinationPath('index.js')

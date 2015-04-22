@@ -5,21 +5,6 @@ var fs = require('fs');
 var readdir = fs.readdirSync;
 var WHITE_LIST_OF_NODE_MODULES = require('./node-white-list');
 
-/* hack to unbreak https://github.com/aaronj1335/rework-webpack-loader/blob/master/lib/plugins/urls.js#L41
-var suit = require('suitcss-preprocessor');
-var rework = require('rework-webpack-loader');
-var urlParse = require('url').parse;
-var mark = require('rework-webpack-loader/lib/mark');
-rework.plugins.urls.processJs = function(js) {
-  return js.replace(mark.re, function(_, url) {
-    var parsed = urlParse(url);
-    var rest = (parsed.query || '') + (parsed.hash || '');
-
-    return '" + require(' + JSON.stringify(parsed.pathname) + ') + "' + rest;
-  });
-};
-*/
-
 var concat = function() {
   var args = Array.prototype.slice.call(arguments);
   var result = args.reduce(function(o, a) {
@@ -104,7 +89,7 @@ module.exports = function(options) {
           ],
           loaders: concat(
             options.hotloader && 'react-hot',
-            'babel?experimental&optional=runtime'
+            'babel?{"optional": "runtime", "stage": 1}'
           ),
         },
       ],
