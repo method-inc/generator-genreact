@@ -101,15 +101,9 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       this.fs.copyTpl(
-        this.templatePath('handlers/_index.js'),
+        this.templatePath('../../handler/templates/handler.js'),
         this.destinationPath('handlers/Home/index.js'),
-        {HandlerName: 'Home'}
-      );
-
-      this.fs.copyTpl(
-        this.templatePath('handlers/_styles.css'),
-        this.destinationPath('handlers/Home/styles.css'),
-        {HandlerName: 'Home'}
+        {RouteName: 'Home'}
       );
 
       this.fs.copyTpl(

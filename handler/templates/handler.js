@@ -1,5 +1,5 @@
 import React from 'react';
-import Resolver from 'react-resolver';
+import {Resolver} from 'react-resolver';
 import {RouteHandler} from 'react-router';
 
 class <%= RouteName %> extends React.Component {
@@ -15,6 +15,8 @@ class <%= RouteName %> extends React.Component {
 <%= RouteName %>.propTypes = {
   // promise: React.PropTypes.string.isRequired,
 };
+
+<%= RouteName %>.displayName = "<%= RouteName %>";
 
 export default Resolver.createContainer(<%= RouteName %>, {
   resolve: {

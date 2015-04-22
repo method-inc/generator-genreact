@@ -1,4 +1,5 @@
 /** @flow */
+require('es6-promise').polyfill();
 require('isomorphic-fetch');
 var debug = require('debug')('app startup');
 

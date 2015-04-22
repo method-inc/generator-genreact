@@ -15,7 +15,7 @@ describe('react:handler', function () {
 
   it('creates files', function () {
     assert.file([
-      'handlers/MyHandler.js',
+      'handlers/MyHandler/index.js',
     ]);
   });
 });
