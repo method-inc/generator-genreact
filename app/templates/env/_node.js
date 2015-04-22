@@ -11,9 +11,9 @@ import routes from '../routes';
 
 import {readFileSync as read} from 'fs';
 
-var tmpl = function(markup) {
-  return read('./index.html', 'utf8').replace('†react†', markup);
-};
+var tmpl = o => read('./index.html', 'utf8')
+  .replace('†react†', o.html)
+  .replace('†__resolver__†',  JSON.stringify(o.data));
 
 var app = express();
 
@@ -31,13 +31,11 @@ app.get('*', function(req, res) {
     },
   });
 
-  router.run(function(Handler, state) {
-    Resolver.renderToString(<Handler />).then(function(string) {
-      res.send(tmpl(string));
-    });
-  });
+  router.run((Handler, state) => (
+    Resolver.renderToString(<Handler />)
+      .then(o => res.send(tmpl({html: o.toString(), data: o.data})))
+  ));
 });
-
 
 debug('app server starting on <%= port %>');
 var server = app.listen(<%= port %>, function () {

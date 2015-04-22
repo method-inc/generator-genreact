@@ -5,8 +5,7 @@ import Router from 'react-router';
 const {
   DefaultRoute,
   Route,
-  RouteHandler,
-  NotFoundRoute
+  NotFoundRoute,
 } = Router;
 
 import App from './handlers/Base';

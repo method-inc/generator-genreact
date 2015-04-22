@@ -12,7 +12,7 @@ class <%= HandlerName %> extends React.Component {
     return (
       <div>
         Welcome <%= HandlerName %>
-        <RouteHandler/>
+        <RouteHandler />
       </div>
     );
   }
