@@ -13,7 +13,7 @@ import {readFileSync as read} from 'fs';
 
 var tmpl = o => read('./index.html', 'utf8')
   .replace('†react†', o.html)
-  .replace('†__resolver__†',  JSON.stringify(o.data));
+  .replace('†__resolver__†', JSON.stringify(o.data));
 
 var app = express();
 
