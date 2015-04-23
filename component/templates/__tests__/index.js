@@ -7,7 +7,7 @@ describe('<%= ComponentName %>', function() {
 
     // Render a <%= ComponentName %> in the document
     var <%= ComponentName %>Test = TestUtils.renderIntoDocument(
-      <<%= ComponentName %> labelOn="On" labelOff="Off" />
+      <<%= ComponentName %> />
     );
 
   });
