@@ -29,6 +29,11 @@ var HandlerGenerator = yeoman.generators.Base.extend({
       this.destinationPath(destinationRoot + '/styles.css'),
       {ComponentName: name}
     );
+    this.fs.copyTpl(
+      this.templatePath('__tests__/index.js'),
+      this.destinationPath(destinationRoot + '/__tests__/index.js'),
+      {ComponentName: name}
+    );
   },
 });
 

@@ -16,7 +16,7 @@ class <%= RouteName %> extends React.Component {
   // promise: React.PropTypes.string.isRequired,
 };
 
-<%= RouteName %>.displayName = "<%= RouteName %>";
+<%= RouteName %>.displayName = '<%= RouteName %>';
 
 export default Resolver.createContainer(<%= RouteName %>, {
   resolve: {
