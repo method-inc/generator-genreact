@@ -22,6 +22,7 @@ describe('react:app', function () {
       '.eslintrc',
       'index.html',
       'index.js',
+      'jest-preprocessor.js',
       'package.json',
       'README.md',
       'routes.js',

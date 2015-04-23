@@ -80,6 +80,10 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('.eslintrc')
       );
       this.fs.copy(
+        this.templatePath('_jest-preprocessor.js'),
+        this.destinationPath('jest-preprocessor.js')
+      );
+      this.fs.copy(
         this.templatePath('travis.yml'),
         this.destinationPath('.travis.yml')
       );
