@@ -16,7 +16,7 @@
     "node-noop": "0.0.1",
     "object.assign": "^1.1.1",
     "react": "^0.13.2",
-    "react-resolver": "^1.1.3",
+    "react-resolver": "iamdustan/react-resolver#expose-client-data-dist",
     "react-router": "^0.13.2",
     "react-tap-event-plugin": "^0.1.6",
     "react-tween-state": "0.0.5",
