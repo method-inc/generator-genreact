@@ -10,7 +10,7 @@ var HandlerGenerator = yeoman.generators.Base.extend({
       type: String,
       desc: 'The ReactComponent name',
     });
-    // Next, add your custom code
+
     this.option('handler'); // This method adds support for a `--handler` flag
   },
 
