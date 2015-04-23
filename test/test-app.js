@@ -18,6 +18,7 @@ describe('react:app', function() {
   it('creates files', function() {
     assert.file([
       '.editorconfig',
+      '.eslintignore',
       '.eslintrc',
       'index.html',
       'index.js',

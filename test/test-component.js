@@ -17,6 +17,7 @@ describe('react:component', function() {
     assert.file([
       'components/TestComponent/index.js',
       'components/TestComponent/styles.css',
+      'components/TestComponent/__tests__/index.js',
     ]);
   });
 });
