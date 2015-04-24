@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "scripts":{
     "lint": "eslint .",
-    "start": "DEBUG=*,-babel node .",
+    "start": "DEBUG=*,-babel node . & node server.js",
     "test": "jest"
   },
   "dependencies": {
