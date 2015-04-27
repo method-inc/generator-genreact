@@ -1,6 +1,6 @@
 # react-generator
 
-[![Build Status](https://magnum.travis-ci.com/Skookum/react-generator.svg?token=PSscovpkQs3Q5xHsFFcG)](https://magnum.travis-ci.com/Skookum/react-generator)
+[![Build Status](https://travis-ci.org/Skookum/best-generator.svg)](https://travis-ci.org/Skookum/best-generator)
 
 Welcome to this brave new world. This is a world of the future that also brings
 with us all of the things we learned in the past.
