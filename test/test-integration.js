@@ -15,8 +15,9 @@ var INTEGRATION_PLUGINS = [
   'babel-eslint',
   'eslint',
   'eslint-plugin-react',
-  'rework',
+  'chalk',
   'glob',
+  'rework',
   'rework-suit-conformance',
 ];
 
@@ -59,8 +60,8 @@ describe('react:integration', function() {
 
     exec('cd ' + tmpPath + ' && node_modules/.bin/eslint .', function(err, stdout, stderr) {
       if (err) {
-        assert(false, 'eslint errors found');
         console.log(err);
+        assert(false, 'eslint errors found');
       }
 
       if (stdout) {
