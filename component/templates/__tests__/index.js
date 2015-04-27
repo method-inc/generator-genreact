@@ -1,3 +1,5 @@
+/*global jest:true, describe: true, it: true*/
+
 jest.dontMock('../index.js');
 describe('<%= ComponentName %>', function() {
   it('changes the text after click', function() {

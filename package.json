@@ -1,7 +1,7 @@
 {
   "name": "generator-react",
-  "version": "1.0.0",
-  "description": "Yeoman react generator",
+  "version": "0.5.0",
+  "description": "A batteries-included isomorphic react application generator.",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "skookum/generator-react",
@@ -19,22 +19,28 @@
   },
   "files": [
     "app",
-    "handler"
+    "component",
+    "handler",
+    "transformers"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "react-generator",
+    "isomorphic-generator",
+    "isomorphic",
+    "react"
   ],
   "dependencies": {
     "chalk": "^1.0.0",
-    "recast": "^0.10.7",
-    "yeoman-generator": "^0.18.9",
-    "yosay": "^1.0.2"
+    "recast": "^0.10.12",
+    "yeoman-generator": "^0.19.2",
+    "yosay": "^1.0.3"
   },
   "devDependencies": {
-    "babel-eslint": "^2.0.2",
+    "babel-eslint": "^3.0.1",
     "debug": "^2.1.3",
-    "eslint": "^0.18.0",
-    "eslint-plugin-react": "^2.1.0",
-    "mocha": "*"
+    "eslint": "^0.20.0",
+    "eslint-plugin-react": "^2.2.0",
+    "mocha": "^2.2.4"
   }
 }

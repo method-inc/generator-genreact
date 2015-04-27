@@ -11,7 +11,6 @@ var _helpers = require('./helpers');
 var once = _helpers.once;
 var flaky = _helpers.flaky;
 
-
 var INTEGRATION_PLUGINS = [
   'babel-eslint',
   'eslint',
