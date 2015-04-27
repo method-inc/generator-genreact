@@ -28,13 +28,16 @@ var once = function(fn) {
 var flaky = function(test, timeout) {
   return function(done) {
     var flakyDone = once(done);
+    var timeout = test.toString().match(/this\.timeout\((\d+)\)/);
+    timeout = timeout ?
+      +timeout[1] :
+      1999; // because mocha’s default timeout is 2000. We want to fire first.
+
     setTimeout(function() {
       console.log('WARNING: Flaky test failed to complete');
       flakyDone();
-      // 1995 because mocha’s default timeout is 2000 and we want to fire before
-      // then in flaky situations
-    }, timeout || 1995);
-    test(flakyDone);
+    }, timeout);
+    test.call(this, flakyDone);
   };
 };
 
