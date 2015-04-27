@@ -1,6 +1,5 @@
 import React from 'react';
 import {Resolver} from 'react-resolver';
-import {RouteHandler} from 'react-router';
 
 class <%= RouteName %> extends React.Component {
   render(): ?ReactElement {
