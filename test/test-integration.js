@@ -1,3 +1,4 @@
+/*eslint no-console: 0*/
 'use strict';
 
 var path = require('path');
@@ -15,6 +16,9 @@ var INTEGRATION_PLUGINS = [
   'babel-eslint',
   'eslint',
   'eslint-plugin-react',
+  'rework',
+  'glob',
+  'rework-suit-conformance',
 ];
 
 describe('react:integration', function() {
@@ -55,5 +59,25 @@ describe('react:integration', function() {
       done();
     });
   }));
+
+  it('Suit conformance', flaky(function(done) {
+    exec('node ' + tmpPath + '/scripts/suit-conformance', function(err, stdout, stderr) {
+      if (err) {
+        console.log(err);
+        assert(false, 'Suit Conformance errors found.');
+      }
+
+      if (stdout) {
+        assert(!/warning/.test(stdout), stdout);
+      }
+
+      if (stderr) {
+        console.error(stderr);
+        assert(false, 'Suit Conformance errors found.');
+      }
+      done();
+    });
+  }));
+
 });
 

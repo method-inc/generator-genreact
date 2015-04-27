@@ -3,8 +3,10 @@
   "description": "An amazing, rich, isomorphic website created with skookum-react",
   "private": true,
   "version": "0.1.0",
-  "scripts":{
-    "lint": "eslint .",
+  "scripts": {
+    "lint": "npm run eslint && npm run suit",
+    "eslint": "eslint .",
+    "suit": "node ./scripts/suit-conformance",
     "start": "DEBUG=*,-babel node . & node server.js",
     "test": "jest"
   },
@@ -43,6 +45,7 @@
     "jest": "^0.1.39",
     "jest-cli": "^0.4.0",
     "react-hot-loader": "^1.2.4",
+    "rework": "^1.0.1",
     "rework-suit-conformance": "^0.4.2",
     "rework-vars": "^3.1.1",
     "rework-webpack-loader": "^0.2.0",
@@ -58,9 +61,9 @@
       "<rootDir>/node_modules/react"
     ],
     "moduleFileExtensions": [
-     "js",
-     "json",
-     "jsx"
+      "js",
+      "json",
+      "jsx"
     ],
     "testFileExtensions": [
       "js"

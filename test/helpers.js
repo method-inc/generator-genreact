@@ -1,3 +1,4 @@
+/*eslint no-console: 0*/
 
 /**
  * Return a function that is only be called once
