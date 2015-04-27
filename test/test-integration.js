@@ -31,21 +31,36 @@ describe('react:integration', function() {
     this.timeout(0);
     setTimeout(reallyDone, timeout);
 
-    tmpPath = path.join(os.tmpdir(), './temp-test');
-    helpers.run(path.join(__dirname, '../app'))
+    tmpPath = path.join(os.tmpdir(), 'temp-test');
+    helpers.run(path.join(__dirname, '..', 'app'))
       .inDir(tmpPath)
       .withOptions({'skip-install': true})
       .on('end', function() {
+        var isReady = false;
+
+        // TODO(dlk): figure out how to run the component generator in this
+        // integration test
+        helpers.run(path.join(__dirname, '..', 'component'))
+          .withArguments(['MyComponent'])
+          .on('end', onReady);
+
         // manually install a few deps here
         console.log('installing minimum dependencies into %s', tmpPath);
-        exec('cd ' + tmpPath + ' && npm install ' + INTEGRATION_PLUGINS.join(' '), reallyDone);
+        exec('cd ' + tmpPath + ' && npm install ' + INTEGRATION_PLUGINS.join(' '), onReady);
+
+        function onReady() {
+          if (isReady) reallyDone();
+          isReady = true;
+        }
       });
   });
 
-  it('passes eslint', flaky(function(done) {
-    exec('cd ' + tmpPath +  ' && node_modules/.bin/eslint .', function(err, stdout, stderr) {
+  it('eslint', flaky(function(done) {
+    this.timeout(4000);
+
+    exec('cd ' + tmpPath + ' && node_modules/.bin/eslint .', function(err, stdout, stderr) {
       if (err) {
-        assert(false, 'Lint errors found');
+        assert(false, 'eslint errors found');
         console.log(err);
       }
 
