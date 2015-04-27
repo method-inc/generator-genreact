@@ -2,3 +2,7 @@
 
 .<%= ComponentName %> {}
 
+.<%= ComponentName %>-child {}
+
+.<%= ComponentName %>-child.is-state {}
+

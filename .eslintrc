@@ -146,7 +146,7 @@
     "complexity": [0, 11],
     "consistent-return": 2,
     "consistent-this": [0, "that"],
-    "curly": [2, "all"],
+    "curly": [2, "multi-line"],
     "default-case": 0,
     "dot-notation": [2, { "allowKeywords": true }],
     "eol-last": 2,

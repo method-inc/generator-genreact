@@ -107,6 +107,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('scripts/_node-white-list.js'),
         this.destinationPath('scripts/node-white-list.js')
       );
+      this.fs.copy(
+        this.templatePath('scripts/_suit-conformance.js'),
+        this.destinationPath('scripts/suit-conformance.js')
+      );
 
       this.fs.copyTpl(
         this.templatePath('../../handler/templates/handler.js'),

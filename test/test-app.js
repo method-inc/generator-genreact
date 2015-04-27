@@ -37,6 +37,7 @@ describe('react:app', function() {
       'handlers/NotFound/index.js',
       'handlers/NotFound/styles.css',
       'scripts/node-white-list.js',
+      'scripts/suit-conformance.js',
       'scripts/webpack.base.js',
     ]);
   });

@@ -9,6 +9,5 @@ describe('<%= ComponentName %>', function() {
     var <%= ComponentName %>Test = TestUtils.renderIntoDocument(
       <<%= ComponentName %> />
     );
-
   });
 });
