@@ -5,7 +5,7 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('react:handler', function() {
+describe('best:handler', function() {
   before(function(done) {
     helpers.run(path.join(__dirname, '../handler'))
       .inDir(path.join(os.tmpdir(), './temp-test'))

@@ -5,7 +5,7 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('react:component', function() {
+describe('best:component', function() {
   before(function(done) {
     helpers.run(path.join(__dirname, '../component'))
       .inDir(path.join(os.tmpdir(), './temp-test'))

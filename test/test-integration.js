@@ -21,7 +21,7 @@ var INTEGRATION_PLUGINS = [
   'rework-suit-conformance',
 ];
 
-describe('react:integration', function() {
+describe('best:integration', function() {
   var tmpPath;
   before(function(done) {
     var reallyDone = once(done);
