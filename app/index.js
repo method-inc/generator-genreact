@@ -23,9 +23,9 @@ module.exports = yeoman.generators.Base.extend({
       defaults: 'Isomorphism',
     });
 
-    this.argument('port', {
+    this.option('port', {
       required: false,
-      type: Number,
+      type: 'Number',
       desc: 'Port for application to run on',
       defaults: 4000,
     });
@@ -45,7 +45,7 @@ module.exports = yeoman.generators.Base.extend({
 
     projectfiles: function () {
       var name = this.name;
-      var port = this.port;
+      var port = this.options.port || this.port;
       var hotServerPort = port + 1;
       this.fs.copyTpl(
         this.templatePath('_README.md'),
