@@ -8,7 +8,7 @@ import React from 'react';
 import Router from 'react-router';
 import {Resolver} from 'react-resolver';
 import routes from '../routes';
-import {resources} from './resources';
+import {resources} from './webpack';
 
 import {readFileSync as read} from 'fs';
 import {join} from 'path';
