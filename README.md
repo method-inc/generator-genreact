@@ -1,6 +1,6 @@
-# react-generator
+# generator-genreact
 
-[![Build Status](https://travis-ci.org/Skookum/best-generator.svg)](https://travis-ci.org/Skookum/best-generator)
+[![Build Status](https://travis-ci.org/Skookum/generator-genreact.svg)](https://travis-ci.org/Skookum/generator-genreact)
 
 Welcome to this brave new world. This is a world of the future that also brings
 with us all of the things we learned in the past.
