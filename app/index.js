@@ -13,7 +13,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the life-changing ' + chalk.red('React') + ' generator!'
+      'Welcome to the life-changing ' + chalk.red('Best') + ' generator!'
     ));
 
     this.argument('name', {
@@ -23,9 +23,9 @@ module.exports = yeoman.generators.Base.extend({
       defaults: 'Isomorphism',
     });
 
-    this.argument('port', {
+    this.option('port', {
       required: false,
-      type: Number,
+      type: 'Number',
       desc: 'Port for application to run on',
       defaults: 4000,
     });
@@ -45,7 +45,7 @@ module.exports = yeoman.generators.Base.extend({
 
     projectfiles: function () {
       var name = this.name;
-      var port = this.port;
+      var port = this.options.port || this.port;
       var hotServerPort = port + 1;
       this.fs.copyTpl(
         this.templatePath('_README.md'),
@@ -99,9 +99,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_server.js'),
         this.destinationPath('server.js')
       );
+
       this.fs.copy(
-        this.templatePath('scripts/_webpack.base.js'),
-        this.destinationPath('scripts/webpack.base.js')
+        this.templatePath('scripts/_build.js'),
+        this.destinationPath('scripts/build.js')
       );
       this.fs.copy(
         this.templatePath('scripts/_node-white-list.js'),
@@ -110,6 +111,10 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('scripts/_suit-conformance.js'),
         this.destinationPath('scripts/suit-conformance.js')
+      );
+      this.fs.copy(
+        this.templatePath('scripts/_webpack.base.js'),
+        this.destinationPath('scripts/webpack.base.js')
       );
 
       this.fs.copyTpl(
@@ -140,6 +145,11 @@ module.exports = yeoman.generators.Base.extend({
         {HandlerName: 'NotFound'}
       );
 
+      this.fs.copyTpl(
+        this.templatePath('env/_webpack.js'),
+        this.destinationPath('env/webpack.js'),
+        {hotServerPort: hotServerPort}
+      );
       this.fs.copyTpl(
         this.templatePath('env/_node.js'),
         this.destinationPath('env/node.js'),

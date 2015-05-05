@@ -2,7 +2,7 @@ Description:
     Creates a new React Component class and style file
 
 Example:
-    yo react:component ComponentName
+    yo genreact:component ComponentName
 
     This will create:
         components/ComponentName/index.js

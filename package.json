@@ -1,18 +1,10 @@
 {
-  "name": "best-generator",
+  "name": "generator-genreact",
   "version": "0.5.0",
   "description": "A batteries-included isomorphic react application generator.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "skookum/generator-react",
-  "author": {
-    "name": "Dustan Kasten",
-    "email": "dustan.kasten@gmail.com",
-    "url": "http://iamdustan.com"
-  },
-  "engines": {
-    "node": ">=0.12.0"
-  },
+  "repository": "skookum/best-generator",
   "scripts": {
     "test": "mocha",
     "lint": "eslint ."
@@ -25,8 +17,8 @@
   ],
   "keywords": [
     "yeoman-generator",
-    "react-generator",
-    "isomorphic-generator",
+    "generator-react",
+    "generator-isomorphic",
     "isomorphic",
     "react"
   ],

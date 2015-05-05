@@ -5,7 +5,7 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('react:app', function() {
+describe('genreact:app', function() {
   before(function(done) {
     this.timeout(3000);
     helpers.run(path.join(__dirname, '../app'))
@@ -31,11 +31,13 @@ describe('react:app', function() {
       'webpack.node.js',
       'env/node.js',
       'env/web.js',
+      'env/webpack.js',
       'handlers/Base/index.js',
       'handlers/Base/styles.css',
       'handlers/Home/index.js',
       'handlers/NotFound/index.js',
       'handlers/NotFound/styles.css',
+      'scripts/build.js',
       'scripts/node-white-list.js',
       'scripts/suit-conformance.js',
       'scripts/webpack.base.js',

@@ -4,6 +4,8 @@ var glob = require('glob');
 var fs = require('fs');
 var readdir = fs.readdirSync;
 var WHITE_LIST_OF_NODE_MODULES = require('./node-white-list');
+var reworkLoader = require('rework-webpack-loader');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var concat = function() {
   var args = Array.prototype.slice.call(arguments);
@@ -64,7 +66,9 @@ module.exports = function(options) {
     output: {
       path: path.join(__dirname, '..', 'dist'),
       filename: '[name].js',
-      publicPath: 'http://localhost:' + options.hotServerPort + '/dist/',
+      publicPath: options.hotServerPort ?
+        'http://localhost:' + options.hotServerPort + '/dist/' :
+        options.cdn,
     },
 
     resolve: {
@@ -79,13 +83,16 @@ module.exports = function(options) {
       // extensions: ['', '.webpack.js', '.web.js', '.js', '.css'],
 
       loaders: [
-        {test: /\.css$/, loader: 'style!rework-webpack'},
+        { test: /\.css$/,
+          loader: options.env !== 'development' ?
+            ExtractTextPlugin.extract('style', 'rework-webpack') :
+            'style!rework-webpack',
+        },
         {test: /\.json$/, loader: 'json'},
         {test: /\.jsx?$/,
           exclude: [
             // exclude everything that isn’t a react- component
             /node_modules(?!\/react-)/,
-            // /node_modules/
           ],
           loaders: concat(
             options.hotloader && 'react-hot',
@@ -111,25 +118,27 @@ module.exports = function(options) {
 
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(options.env || 'development'),
-        '__APP_SERVER__': JSON.stringify('http://localhost:' + options.serverPort),
+        '__APP_SERVER__': JSON.stringify(
+          options.serverPort ?
+            'http://localhost:' + options.serverPort :
+            options.cdn
+        ),
       }),
 
-      new webpack.optimize.DedupePlugin()
+      new webpack.optimize.DedupePlugin(),
+
+      // TODO: optimize this by build
+      (options.env !== 'development' && new ExtractTextPlugin('styles.css'))
     ),
 
     devtool: 'sourcemap',
 
-    /*
     rework: {
       use: [
-        rework.plugins.urls,
-        vars({map: {}})
-      ]
-    }
-    esprima: {
-      transformers: []
+        reworkLoader.plugins.imports,
+        reworkLoader.plugins.urls,
+      ],
     },
-    */
 
     __options: options,
   };

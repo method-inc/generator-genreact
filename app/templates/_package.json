@@ -6,12 +6,10 @@
   "scripts": {
     "lint": "npm run eslint && npm run suit",
     "eslint": "eslint .",
-    "suit": "node ./scripts/suit-conformance",
+    "suit": "node scripts/suit-conformance",
     "start": "DEBUG=*,-babel node . & node server.js",
-    "test": "jest"
-  },
-  "engines": {
-    "node": ">=0.12.0"
+    "test": "jest",
+    "build": "node ./scripts/build && node dist/main.js"
   },
   "dependencies": {
     "es6-promise": "^2.1.0",
@@ -19,6 +17,7 @@
     "flux": "^2.0.1",
     "immutable": "^3.7.1",
     "isomorphic-fetch": "^2.0.1",
+    "normalize.css": "^3.0.3",
     "node-noop": "0.0.1",
     "object.assign": "^1.1.1",
     "react": "^0.13.2",
@@ -41,10 +40,10 @@
     "eslint": "^0.20.0",
     "eslint-plugin-react": "^2.2.0",
     "esprima-loader": "^0.9.0",
+    "extract-text-webpack-plugin": "^0.7.0",
     "file-loader": "^0.8.1",
     "glob": "^5.0.3",
-    "jest": "^0.1.39",
-    "jest-cli": "^0.4.0",
+    "jest-cli": "^0.4.1",
     "react-hot-loader": "^1.2.4",
     "rework": "^1.0.1",
     "rework-suit-conformance": "^0.4.2",
