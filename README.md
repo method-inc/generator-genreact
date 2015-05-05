@@ -110,6 +110,16 @@ characteristics.
 * jest
 * babel
 
+## Resources
+
+A few resources that do talk about some of the ideas you’ll find in here. Some
+of these articles were explicit drivers of this and others are conveniently
+published since we started work. To these authors: thank you for our
+documentation.
+
+* Folder structure: https://gist.github.com/ryanflorence/daafb1e3cb8ad740b346
+* Block, Element, Modifying Your JS Components: https://medium.com/seek-ui-engineering/block-element-modifying-your-javascript-components-d7f99fcab52b
+
 ## License
 
 This generator and toolchain is MIT Licensed. The projects and tools we bring
