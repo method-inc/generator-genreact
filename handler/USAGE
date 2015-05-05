@@ -2,7 +2,7 @@ Description:
     Creates a new ReactRouter handler
 
 Example:
-    yo best:handler RouteHandler
+    yo genreact:handler RouteHandler
 
     This will create:
         handlers/RouteHandler.js

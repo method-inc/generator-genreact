@@ -1,5 +1,5 @@
 {
-  "name": "generator-best",
+  "name": "generator-genreact",
   "version": "0.5.0",
   "description": "A batteries-included isomorphic react application generator.",
   "license": "MIT",
@@ -20,9 +20,8 @@
   ],
   "keywords": [
     "yeoman-generator",
-    "best-generator",
-    "react-generator",
-    "isomorphic-generator",
+    "generator-react",
+    "generator-isomorphic",
     "isomorphic",
     "react"
   ],

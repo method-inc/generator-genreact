@@ -16,7 +16,7 @@ Skookum and intend on using it for production work imminently.
 ## Get Hacking
 
 * `mkdir my-new-project && cd $_`
-* `yo best:app [app-name]`
+* `yo genreact:app [app-name]`
 * `npm start`
 * `open localhost:<%= port %>`
 
@@ -31,7 +31,7 @@ bundling for production is trivial.
 
 **Examples:**
 
-* `yo best:component MyComponentName`
+* `yo genreact:component MyComponentName`
 
 This will generate the following file structure in `./app/components`.
 
@@ -50,8 +50,8 @@ point to a specific part of your application.
 
 **Examples:**
 
-* `yo best:handler MyPageHandler`
-* `yo best:handler MyPageHandler/MySectionHandler`
+* `yo genreact:handler MyPageHandler`
+* `yo genreact:handler MyPageHandler/MySectionHandler`
 
 The key difference is whether it’s a top-level route or a child route. This
 command will create the following structure and attempt to add it to the
@@ -65,11 +65,11 @@ additional, section-specific components, you would do the following:
 
 **Examples:**
 
-* `yo best:component MyFlashyComponent`
+* `yo genreact:component MyFlashyComponent`
   --> `./components/MyFlashComponent`
-* `yo best:component MyFlashyComponent --handler MyPageHandler`
+* `yo genreact:component MyFlashyComponent --handler MyPageHandler`
   --> `./handlers/MyPageHandler/components/MyFlashComponent`
-* `yo best:component MyPageHandler/MySectionHandler/MyFlashyComponent`
+* `yo genreact:component MyPageHandler/MySectionHandler/MyFlashyComponent`
   --> `./app/MyPageHandler/MySectionHandler/components/MyFlashComponent`
 
 ## A few of the things you get

@@ -5,7 +5,7 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('best:app', function() {
+describe('genreact:app', function() {
   before(function(done) {
     this.timeout(3000);
     helpers.run(path.join(__dirname, '../app'))
