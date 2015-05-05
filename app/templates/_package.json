@@ -11,9 +11,6 @@
     "test": "jest",
     "build": "node ./scripts/build && node dist/main.js"
   },
-  "engines": {
-    "node": ">=0.12.0"
-  },
   "dependencies": {
     "es6-promise": "^2.1.0",
     "express": "^4.12.3",
@@ -46,8 +43,7 @@
     "extract-text-webpack-plugin": "^0.7.0",
     "file-loader": "^0.8.1",
     "glob": "^5.0.3",
-    "jest": "^0.1.39",
-    "jest-cli": "^0.4.0",
+    "jest-cli": "^0.4.1",
     "react-hot-loader": "^1.2.4",
     "rework": "^1.0.1",
     "rework-suit-conformance": "^0.4.2",
