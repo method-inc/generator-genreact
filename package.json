@@ -4,7 +4,7 @@
   "description": "A batteries-included isomorphic react application generator.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "skookum/best-generator",
+  "repository": "skookum/generator-genreact",
   "scripts": {
     "test": "mocha",
     "lint": "eslint ."
