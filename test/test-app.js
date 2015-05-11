@@ -20,6 +20,7 @@ describe('genreact:app', function() {
       '.editorconfig',
       '.eslintignore',
       '.eslintrc',
+      '.gitignore',
       'index.html',
       'index.js',
       'jest-preprocessor.js',
