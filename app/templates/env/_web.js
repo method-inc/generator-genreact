@@ -14,6 +14,9 @@ Router.run(routes, Router.HistoryLocation, function(Handler) {
 (function() {
   var tmp = document.getElementById('__resolver__');
   if (tmp) {
+    Object.keys(window.__resolver__).forEach(
+      key => delete window.__resolver__[key]
+    );
     tmp.parentNode.removeChild(tmp);
   }
 })();
