@@ -2,11 +2,10 @@
 
 require('./styles.css');
 
-import React from 'react';
-var {PropTypes} = React;
+import React, {Component, PropTypes} from 'react';
 
-class <%= ComponentName %> extends React.Component {
-  render(): ?ReactElement {
+class <%= ComponentName %> extends Component {
+  render(): ReactElement {
     return (
       <div className="<%= ComponentName %>">
         <%= ComponentName %>
