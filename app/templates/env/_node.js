@@ -8,6 +8,7 @@ var debug = require('debug')('app startup');
 import express from 'express';
 import React from 'react';
 import Router from 'react-router';
+import Location from 'react-router/lib/Location';
 import {Resolver} from 'react-resolver';
 import routes from '../routes';
 import {resources} from './webpack';
@@ -25,23 +26,15 @@ var app = express();
 app.use('/cdn', express.static(join(process.cwd(), 'dist')));
 
 app.get('*', function(req, res) {
-  var router = Router.create({
-    routes: routes,
-    location: req.url,
-    onAbort(redirect) {
-      res.writeHead(303, {Location: redirect.to});
-      res.end();
-    },
-    onError(err) {
-      debug('Routing Error');
-      debug(err);
-    },
-  });
+  var location = new Location(req.path, req.query);
+  Router.run(routes, location, (error, initialState, transition) => {
+    if (error) console.error('THE SKY IS FALLING!', error);
 
-  router.run((Handler, state) => (
-    Resolver.renderToString(<Handler />)
+    console.log('running router', initialState);
+
+    Resolver.renderToString(<Router {...initialState} />)
       .then(o => res.send(tmpl({html: o.toString(), data: o.data})))
-  ));
+  });
 });
 
 debug(`app server starting on ${process.env.PORT}`);
