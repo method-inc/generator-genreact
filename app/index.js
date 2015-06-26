@@ -116,9 +116,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('scripts/_suit-conformance.js'),
         this.destinationPath('scripts/suit-conformance.js')
       );
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('scripts/_webpack.base.js'),
-        this.destinationPath('scripts/webpack.base.js')
+        this.destinationPath('scripts/webpack.base.js'),
+        {port: port}
       );
 
       this.fs.copyTpl(
@@ -166,6 +167,11 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('_routes.js'),
         this.destinationPath('routes.js')
+      );
+
+      this.fs.copy(
+        this.templatePath('lib/_api.js'),
+        this.destinationPath('lib/api.js')
       );
     },
   },

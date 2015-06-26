@@ -33,6 +33,7 @@
     "babel-eslint": "^3.0.1",
     "babel-jest": "^5.0.1",
     "babel-loader": "^5.0.0",
+    "json-loader": "^5.2.0",
     "babel-runtime": "^5.1.11",
     "chalk": "^1.0.0",
     "css-loader": "^0.9.1",

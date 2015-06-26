@@ -1,6 +1,8 @@
 /** @flow */
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
+var projectName = require('../package.json').name;
+
 var debug = require('debug')('app startup');
 
 import express from 'express';
@@ -42,11 +44,11 @@ app.get('*', function(req, res) {
   ));
 });
 
-debug('app server starting on <%= port %>');
-var server = app.listen(<%= port %>, function () {
+debug(`app server starting on ${process.env.PORT}`);
+var server = app.listen(process.env.PORT, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  debug('React-docs listening at http://%s:%s', host, port);
+  debug('%s listening at http://%s:%s', projectName, host, port);
 });
 

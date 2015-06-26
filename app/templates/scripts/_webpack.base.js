@@ -35,6 +35,8 @@ var HOT_SERVER = function(port) {
  * @param {string} options.env development | production
  */
 module.exports = function(options) {
+  var serverPort = options.serverPort || <%= port %>;
+
   var entry = glob.sync('handlers/*/*.js').reduce(function(o, n) {
     o[n.split('.')[0].toLowerCase()] = HOT_SERVER(options.hotServerPort);
     return o;
@@ -76,6 +78,7 @@ module.exports = function(options) {
         'node_modules',
         'components',
         '../components',
+        'lib',
       ],
     },
 
@@ -118,10 +121,11 @@ module.exports = function(options) {
 
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(options.env || 'development'),
-        '__APP_SERVER__': JSON.stringify(
-          options.serverPort ?
-            'http://localhost:' + options.serverPort :
-            options.cdn
+        'process.env.PORT': JSON.stringify(serverPort),
+        'process.env.API_URL': JSON.stringify(
+          typeof options.API_URL === 'undefined' ?
+            ('http://localhost:' + serverPort) :
+            options.API_URL
         ),
       }),
 

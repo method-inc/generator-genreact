@@ -3,11 +3,11 @@
 
 require('./styles.css');
 
-import React from 'react';
+import React, {Component} from 'react';
 import {RouteHandler} from 'react-router';
 
-class <%= HandlerName %> extends React.Component {
-  render(): ?ReactElement {
+class <%= HandlerName %> extends Component {
+  render(): ReactElement {
     return (
       <div>
         Welcome <%= HandlerName %>
