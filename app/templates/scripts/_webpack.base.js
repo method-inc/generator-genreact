@@ -87,9 +87,12 @@ module.exports = function(options) {
 
       loaders: [
         { test: /\.css$/,
-          loader: options.env !== 'development' ?
-            ExtractTextPlugin.extract('style', 'rework-webpack') :
-            'style!rework-webpack',
+          loader:
+            options.target === 'node' ? 'css?modules' :
+              options.env === 'development' ?
+                'style!css?modules' :
+                // 'css!style!rework-webpack',
+                ExtractTextPlugin.extract('css', 'style', 'rework-webpack')
         },
         {test: /\.json$/, loader: 'json'},
         {test: /\.jsx?$/,
