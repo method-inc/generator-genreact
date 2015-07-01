@@ -1,6 +1,8 @@
 /** @flow */
 
-require('./styles.css');
+// weird destructuring to handle server rendering
+import _styles from './styles.css';
+var styles = _styles.locals ? _styles.locals : _styles;
 
 import React, {Component, PropTypes} from 'react';
 
