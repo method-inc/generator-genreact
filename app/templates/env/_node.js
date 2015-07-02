@@ -30,10 +30,10 @@ app.get('*', function(req, res) {
   Router.run(routes, location, (error, initialState, transition) => {
     if (error) console.error('THE SKY IS FALLING!', error);
 
-    console.log('running router', initialState);
+    debug('running router', initialState);
 
     Resolver.renderToString(<Router {...initialState} />)
-      .then(o => res.send(tmpl({html: o.toString(), data: o.data})))
+      .then(o => res.send(tmpl({html: o.toString(), data: o.data})));
   });
 });
 
