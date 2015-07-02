@@ -13,7 +13,11 @@
   },
   "dependencies": {
     "es6-promise": "^2.3.0",
+    <% if (server === 'express') { %>
     "express": "^4.13.0",
+    <% } else { %>
+    "hapi": "^8.6.1",
+    <% } %>
     "flux": "^2.0.3",
     "immutable": "^3.7.4",
     "isomorphic-fetch": "^2.1.0",

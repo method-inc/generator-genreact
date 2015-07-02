@@ -13,7 +13,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the life-changing ' + chalk.red('Best') + ' generator!'
+      'Welcome to the life-changing ' + chalk.red('Genreact') + ' generator!'
     ));
 
     this.argument('name', {
@@ -30,22 +30,33 @@ module.exports = yeoman.generators.Base.extend({
       defaults: 4000,
     });
 
+    this.option('server', {
+      required: false,
+      type: 'String',
+      desc: 'Node framework to use. [hapi, express]',
+      defaults: 'hapi',
+    });
+
     done();
   },
 
   writing: {
     app: function () {
       var name = this.name;
+      var server = this.options.server || this.server;
+
       this.fs.copyTpl(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
-        {name: name}
+        {name: name, server: server}
       );
     },
 
     projectfiles: function () {
       var name = this.name;
       var port = this.options.port || this.port;
+      var server = this.options.server || this.server;
+
       var hotServerPort = port + 1;
       this.fs.copyTpl(
         this.templatePath('_README.md'),
@@ -156,7 +167,7 @@ module.exports = yeoman.generators.Base.extend({
         {hotServerPort: hotServerPort}
       );
       this.fs.copyTpl(
-        this.templatePath('env/_node.js'),
+        this.templatePath('env/_node.' + server + '.js'),
         this.destinationPath('env/node.js'),
         {port: port}
       );

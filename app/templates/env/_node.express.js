@@ -27,17 +27,28 @@ app.use('/cdn', express.static(join(process.cwd(), 'dist')));
 
 app.get('*', function(req, res) {
   var location = new Location(req.path, req.query);
+  function onError(err) {
+    debug('Router Error', err);
+    res.send(500, (tmpl({html: '<h1>500 error</h1>', data: {}})));
+  }
+
+  function onAbort(redirect) {
+    debug('onAbort', redirect);
+    res.send(302, {Location: redirect.to});
+  }
+
   Router.run(routes, location, (error, initialState, transition) => {
-    if (error) console.error('THE SKY IS FALLING!', error);
+    if (error) {
+      console.error('THE SKY IS FALLING!', error);
+      return onError();
+    }
 
-    console.log('running router', initialState);
-
-    Resolver.renderToString(<Router {...initialState} />)
+    Resolver.renderToString(<Router onAbort={onAbort} onError={onError} {...initialState} />)
       .then(o => res.send(tmpl({html: o.toString(), data: o.data})))
   });
 });
 
-debug(`app server starting on ${process.env.PORT}`);
+debug(projectName + ' server starting on ${process.env.PORT}`);
 var server = app.listen(process.env.PORT, function () {
   var host = server.address().address;
   var port = server.address().port;
