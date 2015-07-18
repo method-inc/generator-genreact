@@ -2,12 +2,12 @@
 
 [![Build Status](https://travis-ci.org/Skookum/generator-genreact.svg)](https://travis-ci.org/Skookum/generator-genreact)
 
-Welcome to this brave new world. This is a world of the future that also brings
+Welcome to this brave new world. A better future that also brings
 with us all of the things we learned in the past.
 
 It may be a bit overwhelming if you try to understand all of it right out of the
 gate, though. This is a layered architecture that sets you up for success at
-every level. It is highly opinionated, but attempts to hold these opinions
+every level. It is highly opinionated, but attempts to hold its opinions
 loosely so that you can change it if you so desire.
 
 > NOTE: This is still alpha. We’re actively using it in prototypes at
@@ -25,7 +25,7 @@ Skookum and intend on using it for production work imminently.
 ### Components
 
 Components are the building blocks of your application. Think of them like Web
-Component, but better. They have clear compositional boundaries, care their CSS
+Components, but better. They have clear compositional boundaries, carry their CSS
 and behavior with them, and your application understands these dependencies so
 bundling for production is trivial.
 
@@ -77,16 +77,16 @@ additional, section-specific components, you would do the following:
 Pablo Picaso said that great artists steal. This toolchain takes the best
 practices and experiences we’ve had creating great consumer and enterprise
 products and bundles it together for us in a package that allows us to not just
-get up and running quickly and iterate effectively.
+get up and running quickly but to then iterate effectively.
 
 A few of the things that you will find in here:
 
-* An amazing development environment. There is hot-reload tooling for both the
+* An amazing development environment. There is hot-reloading tooling for both the
   client and server (TODO: patch reloads) built-in.
 * Isomorphic rendering with es6 everywhere.
 * A component architecture with colocated concerns.
 * Test suites that are ready to go.
-* A UI toolchain. We expect and prefer that you’re data layer be somewhere else.
+* A UI toolchain. We expect and prefer that your data layer be somewhere else.
   The data and UI layers should be able to scale independently as needed.
 * SuitCSS conformance checking. CSS in and of itself includes many foot-guns.
   Suit will keep the safety on. (We will likely be exploring other more
@@ -98,8 +98,7 @@ to the component level. As a UI developer, you don’t need to worry about how
 compilation happens or how to ensure that the CSS a component needs gets onto a
 page. You shouldn’t need to worry about how the final files are delivered to a
 client in production. These are all practices that are understood well, but full
-of nuance and tradeoffs. We have tuned—and continue to tune—these
-characteristics.
+of nuance and tradeoffs. We have tuned — and continue to tune — these characteristics.
 
 ## Tools in Use
 
@@ -112,10 +111,9 @@ characteristics.
 
 ## Resources
 
-A few resources that do talk about some of the ideas you’ll find in here. Some
-of these articles were explicit drivers of this and others are conveniently
-published since we started work. To these authors: thank you for our
-documentation.
+A few resources that talk about some of the ideas you’ll find in here. Some
+of these articles were explicit drivers of this project and others were conveniently
+published since we started this work. To these authors: thank you for our documentation.
 
 * Folder structure: https://gist.github.com/ryanflorence/daafb1e3cb8ad740b346
 * Block, Element, Modifying Your JS Components: https://medium.com/seek-ui-engineering/block-element-modifying-your-javascript-components-d7f99fcab52b
