@@ -30,7 +30,7 @@ webpack(
   baseConfig({
     env: 'production',
     target: 'node',
-    serverPort: 'process.env.PORT',
+    serverPort: process.env.PORT,
   })
 )
 .run(function(err) {
