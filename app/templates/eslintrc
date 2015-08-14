@@ -123,7 +123,7 @@
     "no-ternary": 0,
     "no-trailing-spaces": 1,
     "no-throw-literal": 0,
-    "no-undef": 2,
+    "no-undef": 1,
     "no-undef-init": 2,
     "no-undefined": 0,
     "no-underscore-dangle": 0,

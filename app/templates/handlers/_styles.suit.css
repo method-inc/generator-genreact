@@ -1,0 +1,7 @@
+/** @define <%= HandlerName %>; use strict */
+@import 'normalize.css';
+
+.<%= HandlerName %> {
+
+}
+

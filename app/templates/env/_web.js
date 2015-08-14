@@ -2,13 +2,14 @@ require('isomorphic-fetch');
 
 import React from 'react';
 import Router from 'react-router';
+import BrowserHistory from 'react-router/lib/BrowserHistory';
 
-import {Resolver} from 'react-resolver';
 import routes from '../routes';
 
-Router.run(routes, Router.HistoryLocation, function(Handler) {
-  Resolver.render(<Handler />, document.getElementById('app'));
-});
+React.render(
+  <Router history={BrowserHistory} children={routes} />,
+  document.getElementById('app')
+);
 
 // clean up the __resolver__ rehydration script
 (function() {

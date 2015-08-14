@@ -1,8 +1,10 @@
-import React from 'react';
+/** @flow */
+import React, {Component} from 'react';
 import {Resolver} from 'react-resolver';
+import api from 'api';
 
-class <%= RouteName %> extends React.Component {
-  render(): ?ReactElement {
+class <%= RouteName %> extends Component {
+  render(): ReactElement {
     return (
       <div className="<%= RouteName %>">
         <%= RouteName %>
@@ -21,7 +23,7 @@ export default Resolver.createContainer(<%= RouteName %>, {
   resolve: {
     /*
     promise() {
-      return PromiseStore.find(this.getParams().id);
+      return api.get(this.getParams().id);
     }
     */
   },
