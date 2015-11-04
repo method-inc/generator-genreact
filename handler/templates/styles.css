@@ -1,0 +1,7 @@
+/** @define <%= ComponentName %>; use strict */
+
+.<%= RouteName %> {}
+
+.<%= RouteName %>-child {}
+
+.<%= RouteName %>-child.is-state {}

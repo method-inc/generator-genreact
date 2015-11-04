@@ -1,5 +1,8 @@
+/** @flow */
+
+require('./styles.css');
+
 import React from 'react';
-import {Resolver} from 'react-resolver';
 
 class <%= RouteName %> extends React.Component {
   render(): ?ReactElement {
@@ -17,12 +20,4 @@ class <%= RouteName %> extends React.Component {
 
 <%= RouteName %>.displayName = '<%= RouteName %>';
 
-export default Resolver.createContainer(<%= RouteName %>, {
-  resolve: {
-    /*
-    promise() {
-      return PromiseStore.find(this.getParams().id);
-    }
-    */
-  },
-});
+export default <%= RouteName %>;

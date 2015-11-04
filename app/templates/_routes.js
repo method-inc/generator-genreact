@@ -8,16 +8,15 @@ const {
   NotFoundRoute,
 } = Router;
 
-import App from './handlers/Base';
+import Base from './handlers/Base';
 import Home from'./handlers/Home';
 import NotFound from './handlers/NotFound';
 
 var routes = (
-  <Route path="/" handler={App}>
+  <Route path="/" handler={Base}>
     <DefaultRoute name="home" handler={Home} />
     <NotFoundRoute handler={NotFound}/>
   </Route>
 );
 
 export default routes;
-

@@ -1,13 +1,14 @@
 require('isomorphic-fetch');
+require('es6-promise').polyfill();
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Router from 'react-router';
 
-import {Resolver} from 'react-resolver';
 import routes from '../routes';
 
 Router.run(routes, Router.HistoryLocation, function(Handler) {
-  Resolver.render(<Handler />, document.getElementById('app'));
+  ReactDOM.render(<Handler />, document.getElementById('app'));
 });
 
 // clean up the __resolver__ rehydration script
@@ -20,4 +21,3 @@ Router.run(routes, Router.HistoryLocation, function(Handler) {
     tmp.parentNode.removeChild(tmp);
   }
 })();
-

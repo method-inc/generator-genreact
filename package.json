@@ -24,6 +24,8 @@
   ],
   "dependencies": {
     "chalk": "^1.0.0",
+    "font-awesome": "^4.3.0",
+    "font-awesome-webpack": "0.0.3",
     "recast": "^0.10.12",
     "yeoman-generator": "^0.19.2",
     "yosay": "^1.0.3"

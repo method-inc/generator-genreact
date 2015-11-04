@@ -122,4 +122,3 @@ published since we started this work. To these authors: thank you for our docume
 
 This generator and toolchain is MIT Licensed. The projects and tools we bring
 together for you each have their own license and terms you should be aware of.
-

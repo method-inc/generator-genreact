@@ -9,7 +9,7 @@ import {RouteHandler} from 'react-router';
 class <%= HandlerName %> extends React.Component {
   render(): ?ReactElement {
     return (
-      <div>
+      <div className="<%= HandlerName %>">
         Welcome <%= HandlerName %>
         <RouteHandler />
       </div>
@@ -18,4 +18,3 @@ class <%= HandlerName %> extends React.Component {
 }
 
 export default <%= HandlerName %>;
-
