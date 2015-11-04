@@ -5,6 +5,17 @@ require('./styles.css');
 import React from 'react';
 
 class <%= RouteName %> extends React.Component {
+
+  static displayName = '<%= RouteName %>'
+
+  static propTypes = {
+    // id: React.PropTypes.any.isRequired,
+  }
+
+  static contextTypes = {
+    // router: React.PropTypes.any.isRequired,
+  }
+
   render(): ?ReactElement {
     return (
       <div className="<%= RouteName %>">
@@ -13,11 +24,5 @@ class <%= RouteName %> extends React.Component {
     );
   }
 }
-
-<%= RouteName %>.propTypes = {
-  // promise: React.PropTypes.string.isRequired,
-};
-
-<%= RouteName %>.displayName = '<%= RouteName %>';
 
 export default <%= RouteName %>;

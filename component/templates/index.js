@@ -6,6 +6,13 @@ import React from 'react';
 var {PropTypes} = React;
 
 class <%= ComponentName %> extends React.Component {
+
+  static displayName = '<%= ComponentName %>'
+
+  static propTypes = {
+    // id: PropTypes.any.isRequired,
+  }
+
   render(): ?ReactElement {
     return (
       <div className="<%= ComponentName %>">
@@ -14,9 +21,5 @@ class <%= ComponentName %> extends React.Component {
     );
   }
 }
-
-<%= ComponentName %>.propTypes = {
-  id: PropTypes.any.isRequired,
-};
 
 export default <%= ComponentName %>;
