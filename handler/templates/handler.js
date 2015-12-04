@@ -6,6 +6,15 @@ import React from 'react';
 
 class <%= RouteName %> extends React.Component {
 
+  constructor() {
+    super();
+
+    this.state = {
+      msg: ''
+    };
+
+  }
+
   static displayName = '<%= RouteName %>'
 
   static propTypes = {

@@ -13,9 +13,9 @@ import Home from'./handlers/Home';
 import NotFound from './handlers/NotFound';
 
 var routes = (
-  <Route path="/" handler={Base}>
-    <DefaultRoute name="home" handler={Home} />
-    <NotFoundRoute handler={NotFound}/>
+  <Route path="/" component={Base}>
+    <DefaultRoute name="home" component={Home} />
+    <NotFoundRoute component={NotFound}/>
   </Route>
 );
 
