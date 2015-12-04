@@ -30,6 +30,7 @@ app.get('/robots.txt', (req, res) => {
   res.send('User-agent: *\nDisallow:\n');
 });
 
+<<<<<<< HEAD
 app.get('*', (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
@@ -42,6 +43,33 @@ app.get('*', (req, res) => {
     } else {
       res.status(404).send('Not found');
     }
+=======
+app.get('*', function(req, res) {
+
+  var router = Router.create({
+    routes: routes,
+    location: req.url,
+    onAbort(redirect) {
+      res.writeHead(303, { Location: redirect.to });
+      res.end();
+    },
+    onError(err) {
+      debug('Routing Error');
+      debug(err);
+    },
+  });
+
+  router.run((Handler, state) => {
+    var isNotFound = state.routes.some(function(route) {
+      return route.isNotFound;
+    });
+
+    var status = isNotFound ? 404 : 200;
+
+    var renderedHtmlString = tmpl({html: ReactDOM.renderToString(<Handler />)});
+
+    return res.status(status).send(renderedHtmlString);
+>>>>>>> 18e3f90a0860974cf30ffde818735ed80c9eda48
   });
 });
 
