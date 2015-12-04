@@ -10,7 +10,7 @@ class <%= HandlerName %> extends Component {
     return (
       <div className="<%= HandlerName %>">
         Welcome <%= HandlerName %>
-        {this.state.props}
+        {this.props.children}
       </div>
     );
   }

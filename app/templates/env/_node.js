@@ -37,7 +37,7 @@ app.get('*', (req, res) => {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
-      console.log("HERE", <RoutingContext {...renderProps} />);
+    //   console.log("HERE", <RoutingContext {...renderProps} />);
       res.status(200).send(tmpl({html: renderToString(<RoutingContext {...renderProps} />)}));
     } else {
       res.status(404).send('Not found');

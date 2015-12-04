@@ -6,6 +6,10 @@ import React, {Component, PropTypes} from 'react';
 
 class <%= ComponentName %> extends Component {
 
+  state = {
+
+  };
+
   render(): ?ReactElement {
     return (
       <div className="<%= ComponentName %>">

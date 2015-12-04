@@ -6,7 +6,7 @@ import React, {Component, PropTypes} from 'react';
 
 class <%= RouteName %> extends Component {
 
-  this.state = {
+  state = {
     msg: 'Hello World'
   };
 
