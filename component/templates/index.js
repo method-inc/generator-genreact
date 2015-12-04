@@ -2,16 +2,9 @@
 
 require('./styles.css');
 
-import React from 'react';
-var {PropTypes} = React;
+import React, {Component, PropTypes} from 'react';
 
-class <%= ComponentName %> extends React.Component {
-
-  static displayName = '<%= ComponentName %>'
-
-  static propTypes = {
-    // id: PropTypes.any.isRequired,
-  }
+class <%= ComponentName %> extends Component {
 
   render(): ?ReactElement {
     return (
@@ -20,6 +13,13 @@ class <%= ComponentName %> extends React.Component {
       </div>
     );
   }
+
+  static displayName = '<%= ComponentName %>';
+
+  static propTypes = {
+    // id: PropTypes.any.isRequired,
+  };
+
 }
 
 export default <%= ComponentName %>;

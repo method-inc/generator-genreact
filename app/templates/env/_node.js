@@ -5,10 +5,10 @@ var debug = require('debug')('app startup');
 
 import express from 'express';
 import React from 'react';
-import ReactDOM from 'react-dom/server';
-import Router from 'react-router';
+import { renderToString } from 'react-dom/server';
+import { match, RoutingContext } from 'react-router';
 import routes from '../routes';
-import {resources} from './webpack';
+import { resources } from './webpack';
 
 import {readFileSync as read} from 'fs';
 import {join} from 'path';
@@ -25,37 +25,23 @@ app.use('/cdn', express.static(join(process.cwd(), 'dist')));
 app.use('/public', express.static(join(process.cwd(), 'public')));
 
 // robots.txt
-app.get('/robots.txt', function(req, res) {
+app.get('/robots.txt', (req, res) => {
   res.type('text/plain');
   res.send('User-agent: *\nDisallow:\n');
 });
 
-app.get('*', function(req, res) {
-
-  var router = Router.create({
-    routes: routes,
-    location: req.url,
-    onAbort(redirect) {
-      res.writeHead(303, { Location: redirect.to });
-      res.end();
-    },
-    onError(err) {
-      debug('Routing Error');
-      debug(err);
-    },
-  });
-
-  router.run((Handler, state) => {
-    var isNotFound = state.routes.some(function(route) {
-      return route.isNotFound;
-    });
-
-    var status = isNotFound ? 404 : 200;
-
-    var renderedHtmlString = tmpl({html: ReactDOM.renderToString(<Handler />)});
-    res.status(status).send(renderedHtmlString);
-
-    return res.status(status).send(renderedHtmlString);
+app.get('*', (req, res) => {
+  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    if (error) {
+      res.status(500).send(error.message);
+    } else if (redirectLocation) {
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+    } else if (renderProps) {
+      console.log("HERE", <RoutingContext {...renderProps} />);
+      res.status(200).send(tmpl({html: renderToString(<RoutingContext {...renderProps} />)}));
+    } else {
+      res.status(404).send('Not found');
+    }
   });
 });
 

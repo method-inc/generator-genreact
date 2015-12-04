@@ -3,15 +3,14 @@
 
 require('./styles.css');
 
-import React from 'react';
-import {RouteHandler} from 'react-router';
+import React, {Component} from 'react';
 
-class <%= HandlerName %> extends React.Component {
+class <%= HandlerName %> extends Component {
   render(): ?ReactElement {
     return (
       <div className="<%= HandlerName %>">
         Welcome <%= HandlerName %>
-        <RouteHandler />
+        {this.state.props}
       </div>
     );
   }

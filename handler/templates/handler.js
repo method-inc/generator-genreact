@@ -2,36 +2,28 @@
 
 require('./styles.css');
 
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
-class <%= RouteName %> extends React.Component {
+class <%= RouteName %> extends Component {
 
-  constructor() {
-    super();
-
-    this.state = {
-      msg: ''
-    };
-
-  }
-
-  static displayName = '<%= RouteName %>'
-
-  static propTypes = {
-    // id: React.PropTypes.any.isRequired,
-  }
-
-  static contextTypes = {
-    // router: React.PropTypes.any.isRequired,
-  }
+  this.state = {
+    msg: 'Hello World'
+  };
 
   render(): ?ReactElement {
     return (
       <div className="<%= RouteName %>">
-        <%= RouteName %>
+        {this.state.msg} <%= RouteName %>
       </div>
     );
   }
+
+  static displayName = '<%= RouteName %>';
+
+  static propTypes = {
+    // id: PropTypes.any.isRequired,
+  };
+
 }
 
 export default <%= RouteName %>;
