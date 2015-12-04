@@ -53,7 +53,6 @@ app.get('*', function(req, res) {
     var status = isNotFound ? 404 : 200;
 
     var renderedHtmlString = tmpl({html: ReactDOM.renderToString(<Handler />)});
-    res.status(status).send(renderedHtmlString);
 
     return res.status(status).send(renderedHtmlString);
   });
