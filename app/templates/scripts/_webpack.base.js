@@ -140,14 +140,14 @@ module.exports = function(options) {
     devtool: 'sourcemap',
 
     postcss: function (webpack) {
-        return [
-            postcssImport({
-                addDependencyTo: webpack
-            }),
-            precss({
-              variables: { variables: styleVars }
-            })
-        ];
+      return [
+        postcssImport({
+          addDependencyTo: webpack
+        }),
+        precss({
+          variables: { variables: styleVars }
+        })
+      ];
     },
 
     autoprefixer: {

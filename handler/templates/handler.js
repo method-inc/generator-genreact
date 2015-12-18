@@ -2,7 +2,7 @@
 
 require('./styles.css');
 
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 class <%= RouteName %> extends Component {
 
