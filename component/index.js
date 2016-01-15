@@ -12,13 +12,15 @@ var HandlerGenerator = yeoman.generators.Base.extend({
     });
 
     this.option('handler'); // This method adds support for a `--handler` flag
+    this.option('component');
   },
 
   writing: function() {
     var name = last(this.name.split('/'));
     var handlerRoot = this.options.handler ? 'handlers/' + this.options.handler + '/' : '';
+    var componentRoot = this.options.component ? 'components/' + this.options.component + '/' : '';
 
-    var destinationRoot = handlerRoot + 'components/' + this.name;
+    var destinationRoot = (this.options.handler ? handlerRoot : componentRoot) + 'components/' + this.name;
     this.fs.copyTpl(
       this.templatePath('index.js'),
       this.destinationPath(destinationRoot + '/index.js'),
