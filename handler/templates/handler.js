@@ -1,28 +1,29 @@
-import React from 'react';
-import {Resolver} from 'react-resolver';
+/** @flow */
 
-class <%= RouteName %> extends React.Component {
+require('./styles.css');
+
+import React, { Component, PropTypes } from 'react';
+
+class <%= RouteName %> extends Component {
+
+  state = {
+    msg: 'Hello World'
+  };
+
   render(): ?ReactElement {
     return (
       <div className="<%= RouteName %>">
-        <%= RouteName %>
+        {this.state.msg} <%= RouteName %>
       </div>
     );
   }
+
+  static displayName = '<%= RouteName %>';
+
+  static propTypes = {
+    // id: PropTypes.any.isRequired,
+  };
+
 }
 
-<%= RouteName %>.propTypes = {
-  // promise: React.PropTypes.string.isRequired,
-};
-
-<%= RouteName %>.displayName = '<%= RouteName %>';
-
-export default Resolver.createContainer(<%= RouteName %>, {
-  resolve: {
-    /*
-    promise() {
-      return PromiseStore.find(this.getParams().id);
-    }
-    */
-  },
-});
+export default <%= RouteName %>;

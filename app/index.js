@@ -103,6 +103,14 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_server.js'),
         this.destinationPath('server.js')
       );
+      this.fs.copy(
+        this.templatePath('_Procfile'),
+        this.destinationPath('Procfile')
+      );
+      this.fs.copy(
+        this.templatePath('_globalStyleVars.js'),
+        this.destinationPath('globalStyleVars.js')
+      );
 
       this.fs.copy(
         this.templatePath('scripts/_build.js'),
@@ -111,10 +119,6 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('scripts/_node-white-list.js'),
         this.destinationPath('scripts/node-white-list.js')
-      );
-      this.fs.copy(
-        this.templatePath('scripts/_suit-conformance.js'),
-        this.destinationPath('scripts/suit-conformance.js')
       );
       this.fs.copy(
         this.templatePath('scripts/_webpack.base.js'),
@@ -128,14 +132,20 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       this.fs.copyTpl(
+        this.templatePath('../../handler/templates/styles.css'),
+        this.destinationPath('handlers/Home/styles.css'),
+        {RouteName: 'Home'}
+      );
+
+      this.fs.copyTpl(
         this.templatePath('handlers/_index.js'),
         this.destinationPath('handlers/Base/index.js'),
-        {HandlerName: 'AppBase'}
+        {HandlerName: 'Base'}
       );
       this.fs.copyTpl(
         this.templatePath('handlers/_styles.css'),
         this.destinationPath('handlers/Base/styles.css'),
-        {HandlerName: 'AppBase'}
+        {HandlerName: 'Base'}
       );
 
       this.fs.copyTpl(

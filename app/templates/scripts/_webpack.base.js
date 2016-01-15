@@ -4,8 +4,10 @@ var glob = require('glob');
 var fs = require('fs');
 var readdir = fs.readdirSync;
 var WHITE_LIST_OF_NODE_MODULES = require('./node-white-list');
-var reworkLoader = require('rework-webpack-loader');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var postcssImport = require('postcss-import');
+var precss = require('precss');
+var styleVars = require('../globalStyleVars');
 
 var concat = function() {
   var args = Array.prototype.slice.call(arguments);
@@ -35,6 +37,8 @@ var HOT_SERVER = function(port) {
  * @param {string} options.env development | production
  */
 module.exports = function(options) {
+  var serverPort = options.serverPort || 4444;
+
   var entry = glob.sync('handlers/*/*.js').reduce(function(o, n) {
     o[n.split('.')[0].toLowerCase()] = HOT_SERVER(options.hotServerPort);
     return o;
@@ -76,6 +80,7 @@ module.exports = function(options) {
         'node_modules',
         'components',
         '../components',
+        'lib',
       ],
     },
 
@@ -85,8 +90,8 @@ module.exports = function(options) {
       loaders: [
         { test: /\.css$/,
           loader: options.env !== 'development' ?
-            ExtractTextPlugin.extract('style', 'rework-webpack') :
-            'style!rework-webpack',
+            ExtractTextPlugin.extract('style', 'css?importLoaders=1!postcss!autoprefixer') :
+            'style!css?importLoaders=1!postcss!autoprefixer',
         },
         {test: /\.json$/, loader: 'json'},
         {test: /\.jsx?$/,
@@ -118,29 +123,37 @@ module.exports = function(options) {
 
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(options.env || 'development'),
-        '__APP_SERVER__': JSON.stringify(
-          options.serverPort ?
-            'http://localhost:' + options.serverPort :
-            options.cdn
-        ),
+        'process.env.PORT': JSON.stringify(serverPort),
       }),
 
       new webpack.optimize.DedupePlugin(),
 
       // TODO: optimize this by build
-      (options.env !== 'development' && new ExtractTextPlugin('styles.css'))
+      (options.env !== 'development' && new ExtractTextPlugin('styles.css')),
+      (options.env !== 'development' && new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+        },
+      }))
     ),
 
     devtool: 'sourcemap',
 
-    rework: {
-      use: [
-        reworkLoader.plugins.imports,
-        reworkLoader.plugins.urls,
-      ],
+    postcss: function (webpack) {
+      return [
+        postcssImport({
+          addDependencyTo: webpack
+        }),
+        precss({
+          variables: { variables: styleVars }
+        })
+      ];
+    },
+
+    autoprefixer: {
+      browsers: 'last 2 version',
     },
 
     __options: options,
   };
 };
-

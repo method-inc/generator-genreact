@@ -14,4 +14,3 @@ new WebpackDevServer(webpack(config), {
   }
   debug('Listening at localhost:' + port);
 });
-

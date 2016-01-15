@@ -25,7 +25,7 @@ bundling for production is trivial.
 
 **Examples:**
 
-* `yo react:component MyComponentName`
+* `yo genreact:component MyComponentName`
 
 This will generate the following file structure in `./app/components`.
 
@@ -44,8 +44,8 @@ point to a specific part of your application.
 
 **Examples:**
 
-* `yo react:handler MyPageHandler`
-* `yo react:handler MyPageHandler/MySectionHandler`
+* `yo genreact:handler MyPageHandler`
+* `yo genreact:handler MyPageHandler/MySectionHandler`
 
 The key difference is whether it’s a top-level route or a child route. This
 command will create the following structure and attempt to add it to the
@@ -59,11 +59,11 @@ additional, section-specific components, you would do the following:
 
 **Examples:**
 
-* `yo react:component MyFlashyComponent`
+* `yo genreact:component MyFlashyComponent`
   --> `./app/components/MyFlashComponent`
-* `yo react:component MyPageHandler/MyFlashyComponent`
+* `yo genreact:component MyPageHandler/MyFlashyComponent`
   --> `./app/MyPageHandler/components/MyFlashComponent`
-* `yo react:component MyPageHandler/MySectionHandler/MyFlashyComponent`
+* `yo genreact:component MyPageHandler/MySectionHandler/MyFlashyComponent`
   --> `./app/MyPageHandler/MySectionHandler/components/MyFlashComponent`
 
 ## A few of the things you get
