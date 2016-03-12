@@ -6,7 +6,8 @@ var debug = require('debug')('app startup');
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { match, RoutingContext } from 'react-router';
+import { match, RouterContext } from 'react-router';
+import { createLocation }       from 'history';
 import routes from '../routes';
 import { resources } from './webpack';
 
@@ -31,14 +32,14 @@ app.get('/robots.txt', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  const location = createLocation(req.url);
+  match({ routes, location }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).send(error.message);
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
-    //   console.log("HERE", <RoutingContext {...renderProps} />);
-      res.status(200).send(tmpl({html: renderToString(<RoutingContext {...renderProps} />)}));
+      res.status(200).send(tmpl({html: renderToString(<RouterContext {...renderProps} />)}));
     } else {
       res.status(404).send('Not found');
     }

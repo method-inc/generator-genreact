@@ -81,6 +81,8 @@ module.exports = function(options) {
         'components',
         '../components',
         'lib',
+        'actions',
+        'consts',
       ],
     },
 
@@ -90,8 +92,8 @@ module.exports = function(options) {
       loaders: [
         { test: /\.css$/,
           loader: options.env !== 'development' ?
-            ExtractTextPlugin.extract('style', 'css?importLoaders=1!postcss!autoprefixer') :
-            'style!css?importLoaders=1!postcss!autoprefixer',
+            ExtractTextPlugin.extract('style', 'css?importLoaders=1!postcss') :
+            'style!css?importLoaders=1!postcss',
         },
         {test: /\.json$/, loader: 'json'},
         {test: /\.jsx?$/,
@@ -101,7 +103,7 @@ module.exports = function(options) {
           ],
           loaders: concat(
             options.hotloader && 'react-hot',
-            'babel?{"optional": "runtime", "stage": 1}'
+            'babel?presets[]=react,presets[]=es2015,presets[]=stage-1'
           ),
         },
       ],
@@ -129,12 +131,12 @@ module.exports = function(options) {
       new webpack.optimize.DedupePlugin(),
 
       // TODO: optimize this by build
-      (options.env !== 'development' && new ExtractTextPlugin('styles.css')),
-      (options.env !== 'development' && new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        },
-      }))
+      (options.env !== 'development' && new ExtractTextPlugin('styles.css'))
+      // (options.env !== 'development' && new webpack.optimize.UglifyJsPlugin({
+      //   compress: {
+      //     warnings: false,
+      //   },
+      // }))
     ),
 
     devtool: 'sourcemap',
@@ -148,10 +150,6 @@ module.exports = function(options) {
           variables: { variables: styleVars }
         })
       ];
-    },
-
-    autoprefixer: {
-      browsers: 'last 2 version',
     },
 
     __options: options,
