@@ -1,6 +1,6 @@
 {
   "name": "generator-genreact",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A batteries-included isomorphic react application generator.",
   "license": "MIT",
   "main": "app/index.js",
@@ -20,7 +20,8 @@
     "generator-react",
     "generator-isomorphic",
     "isomorphic",
-    "react"
+    "react",
+    "redux"
   ],
   "dependencies": {
     "chalk": "^1.0.0",
