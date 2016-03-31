@@ -20,7 +20,7 @@ module.exports = yeoman.generators.Base.extend({
       required: false,
       type: String,
       desc: 'Your Isomorphic React Application’s name',
-      defaults: 'Isomorphism',
+      defaults: this.appname,
     });
 
     this.option('port', {
@@ -30,14 +30,22 @@ module.exports = yeoman.generators.Base.extend({
       defaults: 4000,
     });
 
-    done();
+    this.prompt({
+      type: 'confirm',
+      name: 'redux',
+      message: 'Add redux to project (default y)',
+      default: true,
+    }, function (answers) {
+      this.redux = answers.redux;
+      done();
+    }.bind(this));
   },
 
   writing: {
     app: function () {
       var name = this.name;
       this.fs.copyTpl(
-        this.templatePath('_package.json'),
+        this.templatePath(this.redux ? '_package-redux.json' : '_package.json'),
         this.destinationPath('package.json'),
         {name: name}
       );
@@ -47,6 +55,7 @@ module.exports = yeoman.generators.Base.extend({
       var name = this.name;
       var port = this.options.port || this.port;
       var hotServerPort = port + 1;
+
       this.fs.copyTpl(
         this.templatePath('_README.md'),
         this.destinationPath('README.md'),
@@ -54,7 +63,7 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       this.fs.copyTpl(
-        this.templatePath('_index.html'),
+        this.templatePath(this.redux ? '_index-redux.html' : '_index.html'),
         this.destinationPath('index.html'),
         {name: name, hotServerPort: hotServerPort}
       );
@@ -130,7 +139,6 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('handlers/Home/index.js'),
         {RouteName: 'Home'}
       );
-
       this.fs.copyTpl(
         this.templatePath('../../handler/templates/styles.css'),
         this.destinationPath('handlers/Home/styles.css'),
@@ -164,19 +172,37 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('env/webpack.js'),
         {hotServerPort: hotServerPort}
       );
+
       this.fs.copyTpl(
-        this.templatePath('env/_node.js'),
+        this.templatePath(this.redux ? 'env/_node-redux.js' : 'env/_node.js'),
         this.destinationPath('env/node.js'),
         {port: port}
       );
       this.fs.copy(
-        this.templatePath('env/_web.js'),
+        this.templatePath(this.redux ? 'env/_web-redux.js' : 'env/_web.js'),
         this.destinationPath('env/web.js')
       );
       this.fs.copy(
         this.templatePath('_routes.js'),
         this.destinationPath('routes.js')
       );
+
+      if (this.redux) {
+        this.fs.copy(
+          this.templatePath('reducers/_index.js'),
+          this.destinationPath('reducers/index.js')
+        );
+
+        this.fs.copy(
+          this.templatePath('lib/store/_defaultState.js'),
+          this.destinationPath('lib/store/defaultState.js')
+        );
+
+        this.fs.copy(
+          this.templatePath('lib/store/_configureStore.js'),
+          this.destinationPath('lib/store/configureStore.js')
+        );
+      }
     },
   },
 

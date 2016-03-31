@@ -1,0 +1,8 @@
+Description:
+    Creates a new Redux Reducer file
+
+Example:
+    yo genreact:reducer Counter setCounter incrementCounter decrementCounter
+
+    This will create:
+        reducer/CounterReducer.js

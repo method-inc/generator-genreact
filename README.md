@@ -72,6 +72,21 @@ additional, section-specific components, you would do the following:
 * `yo genreact:component MyPageHandler/MySectionHandler/MyFlashyComponent`
   --> `./app/MyPageHandler/MySectionHandler/components/MyFlashComponent`
 
+### Action & Reducer (Redux)
+
+You’ve generated a few components and now you want to store data and get data. To generate
+actions and reducers, you would do the following:
+
+**Examples:**
+
+* `yo genreact:actionReducer User setUser addUser`
+  --> `./actions/UserActions.js`
+  --> `./reducers/UserReducer.js`
+* `yo genreact:action User setUser addUser`
+  --> `./actions/UserActions.js`
+* `yo genreact:reducer User setUser addUser`
+  --> `./reducers/UserReducer.js`
+
 ## A few of the things you get
 
 Pablo Picaso said that great artists steal. This toolchain takes the best
@@ -84,13 +99,10 @@ A few of the things that you will find in here:
 * An amazing development environment. There is hot-reloading tooling for both the
   client and server (TODO: patch reloads) built-in.
 * Isomorphic rendering with es6 everywhere.
-* A component architecture with colocated concerns.
+* A component architecture with co-located concerns.
 * Test suites that are ready to go.
 * A UI toolchain. We expect and prefer that your data layer be somewhere else.
   The data and UI layers should be able to scale independently as needed.
-* SuitCSS conformance checking. CSS in and of itself includes many foot-guns.
-  Suit will keep the safety on. (We will likely be exploring other more
-  restrictive or experimental options in the future.)
 * (TODO) Rich documentation and style guide web interface.
 
 In this environment, we reduce the concerns of our UI designers and developers
@@ -105,9 +117,15 @@ of nuance and tradeoffs. We have tuned — and continue to tune — these charac
 * Webpack
 * React
 * react-router
-* react-resolver
 * jest
 * babel
+
+## Optional
+
+* redux
+* redux-thunk
+* redux-actions
+* react-redux
 
 ## Resources
 

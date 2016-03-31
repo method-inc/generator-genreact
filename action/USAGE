@@ -1,0 +1,8 @@
+Description:
+    Creates a new Redux Actions file
+
+Example:
+    yo genreact:action Counter setCounter incrementCounter decrementCounter
+
+    This will create:
+        actions/CounterActions.js
