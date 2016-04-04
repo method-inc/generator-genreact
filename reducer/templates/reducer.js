@@ -1,4 +1,3 @@
-/** @flow */
 import defaultState from 'store/defaultState';
 import {<% actions.forEach(function(action, index) { %><%= toConst(action) %><% if (index !== actions.length - 1) { %>, <% } %><% }); %>} from '<%= actionFile %>';
 
