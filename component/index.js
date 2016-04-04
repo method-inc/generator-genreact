@@ -15,6 +15,7 @@ var HandlerGenerator = yeoman.generators.Base.extend({
       required: false,
       type: Array,
       desc: 'The props',
+      default: [],
     });
 
     this.option('handler'); // This method adds support for a `--handler` flag

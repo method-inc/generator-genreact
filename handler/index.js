@@ -24,9 +24,10 @@ var HandlerGenerator = generators.Base.extend({
     });
 
     this.argument('props', {
-      required: true,
+      required: false,
       type: Array,
       desc: 'The props',
+      default: [],
     });
 
     // Next, add your custom code
