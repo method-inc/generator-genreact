@@ -22,7 +22,8 @@ class <%= RouteName %> extends Component {
 
   static propTypes = {
     // id: PropTypes.any.isRequired,
-  };
+<% props.forEach(function(prop, index) { var propData = prop.split(':');  %>    <%= propData[0] %>: PropTypes.<%= propData[1] %><%= propData.length === 3 ? '.isRequired' : '' %>,
+<% }); %>  };
 
 }
 

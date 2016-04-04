@@ -22,6 +22,13 @@ var HandlerGenerator = generators.Base.extend({
       type: String,
       desc: 'The RouteHandler name',
     });
+
+    this.argument('props', {
+      required: true,
+      type: Array,
+      desc: 'The props',
+    });
+
     // Next, add your custom code
     this.option('parent'); // This method adds support for a `--coffee` flag
   },
@@ -46,7 +53,7 @@ var HandlerGenerator = generators.Base.extend({
     this.fs.copyTpl(
       this.templatePath('handler.js'),
       this.destinationPath('handlers/' + this.name + '/index.js'),
-      {RouteName: this.name}
+      {RouteName: this.name, props: this.props}
     );
     this.fs.copyTpl(
       this.templatePath('styles.css'),

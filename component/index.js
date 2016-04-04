@@ -11,6 +11,12 @@ var HandlerGenerator = yeoman.generators.Base.extend({
       desc: 'The ReactComponent name',
     });
 
+    this.argument('props', {
+      required: false,
+      type: Array,
+      desc: 'The props',
+    });
+
     this.option('handler'); // This method adds support for a `--handler` flag
     this.option('component');
   },
@@ -24,7 +30,7 @@ var HandlerGenerator = yeoman.generators.Base.extend({
     this.fs.copyTpl(
       this.templatePath('index.js'),
       this.destinationPath(destinationRoot + '/index.js'),
-      {ComponentName: name}
+      {ComponentName: name, props: this.props}
     );
     this.fs.copyTpl(
       this.templatePath('styles.css'),
