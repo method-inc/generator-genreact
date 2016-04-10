@@ -15,6 +15,7 @@ Skookum and intend on using it for production work imminently.
 
 ## Get Hacking
 
+* `npm install -g generator-genreact`
 * `mkdir my-new-project && cd $_`
 * `yo genreact:app [app-name]`
 * `npm start`
