@@ -1,5 +1,4 @@
 'use strict';
-var util = require('../util');
 var yeoman = require('yeoman-generator');
 var generators = yeoman.generators;
 var _ = require('lodash');

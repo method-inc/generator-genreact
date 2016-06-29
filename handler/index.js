@@ -1,18 +1,19 @@
 'use strict';
-var util = require('../util');
 var yeoman = require('yeoman-generator');
+var _ = require('lodash');
 var generators = yeoman.generators;
+var last = function(a) { return a[a.length - 1]; };
 
-function appendRoute(file, route, parentRoute) {
-  util.transformFile({
-    file: file,
-    transform: {
-      type: 'appendRoute',
-      route: route,
-      parentRoute: parentRoute,
-    },
-  });
-}
+// function appendRoute(file, route, parentRoute) {
+//   transformFile({
+//     file: file,
+//     transform: {
+//       type: 'appendRoute',
+//       route: route,
+//       parentRoute: parentRoute,
+//     },
+//   });
+// }
 
 var HandlerGenerator = generators.Base.extend({
   constructor: function() {
@@ -51,15 +52,20 @@ var HandlerGenerator = generators.Base.extend({
   */
 
   writing: function() {
+    let nameArray = this.name.split('/');
+    var name = _.upperFirst(last(nameArray));
+    nameArray[nameArray.length - 1] = name;
+    var fileName = nameArray.join('/');
+
     this.fs.copyTpl(
       this.templatePath('handler.js'),
-      this.destinationPath('handlers/' + this.name + '/index.js'),
-      {RouteName: this.name, props: this.props}
+      this.destinationPath('handlers/' + fileName + '/index.js'),
+      {RouteName: name, props: this.props}
     );
     this.fs.copyTpl(
       this.templatePath('styles.css'),
-      this.destinationPath('handlers/' + this.name + '/styles.css'),
-      {RouteName: this.name}
+      this.destinationPath('handlers/' + fileName + '/styles.css'),
+      {RouteName: name}
     );
 
     /*

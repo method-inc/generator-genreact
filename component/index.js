@@ -1,5 +1,6 @@
 'use strict';
 var yeoman = require('yeoman-generator');
+var _ = require('lodash');
 var last = function(a) { return a[a.length - 1]; };
 
 var HandlerGenerator = yeoman.generators.Base.extend({
@@ -23,11 +24,15 @@ var HandlerGenerator = yeoman.generators.Base.extend({
   },
 
   writing: function() {
-    var name = last(this.name.split('/'));
+    let nameArray = this.name.split('/');
+    var name = _.upperFirst(last(nameArray));
+    nameArray[nameArray.length - 1] = name;
+    var fileName = nameArray.join('/');
+
     var handlerRoot = this.options.handler ? 'handlers/' + this.options.handler + '/' : '';
     var componentRoot = this.options.component ? 'components/' + this.options.component + '/' : '';
 
-    var destinationRoot = (this.options.handler ? handlerRoot : componentRoot) + 'components/' + this.name;
+    var destinationRoot = (this.options.handler ? handlerRoot : componentRoot) + 'components/' + fileName;
     this.fs.copyTpl(
       this.templatePath('index.js'),
       this.destinationPath(destinationRoot + '/index.js'),
